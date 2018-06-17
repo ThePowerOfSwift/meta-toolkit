@@ -1,7 +1,7 @@
 <?php
 if(!function_exists('listingpro_get_all_reviews')){
 	function listingpro_get_all_reviews($postid){
-		
+
 		global $listingpro_options;
 		$showReport = true;
 		if( isset($listingpro_options['lp_detail_page_review_report_button']) ){
@@ -10,7 +10,7 @@ if(!function_exists('listingpro_get_all_reviews')){
 			}
 		}
 		?>
-		
+
 		<?php
 		$currentUserId = get_current_user_id();
 		$key = 'reviews_ids';
@@ -19,7 +19,7 @@ if(!function_exists('listingpro_get_all_reviews')){
 		if( !empty($review_idss) ){
 			$review_ids = explode(",",$review_idss);
 		}
-		
+
 		$active_reviews_ids = array();
 		if( !empty($review_ids) && is_array($review_ids) ){
 			$review_ids = array_unique($review_ids);
@@ -35,9 +35,9 @@ if(!function_exists('listingpro_get_all_reviews')){
 			}
 			echo '<h3 class="comment-reply-title">'.count($active_reviews_ids).' '.$label.'</h3>';
 		}
-		else{			
+		else{
 		}
-		
+
 		if( !empty($review_ids) && count($review_ids)>0 ){
 			$review_ids = array_reverse($review_ids, true);
 			echo '<div class="reviews-section">';
@@ -60,7 +60,7 @@ if(!function_exists('listingpro_get_all_reviews')){
 						// moin here strt
 						$review_reply = '';
 						$review_reply = listing_get_metabox_by_ID('review_reply' ,get_the_ID());
-						
+
 						$review_reply_time = '';
 						$review_reply_time = listing_get_metabox_by_ID('review_reply_time' ,get_the_ID());
 						$review_reply_time=date_create($review_reply_time);
@@ -71,13 +71,13 @@ if(!function_exists('listingpro_get_all_reviews')){
 						$rate = $rating;
 						$gallery = get_post_meta(get_the_ID(), 'gallery_image_ids', true);
 						$author_id = $post->post_author;
-						
-						$author_avatar_url = get_user_meta($author_id, "listingpro_author_img_url", true); 
+
+						$author_avatar_url = get_user_meta($author_id, "listingpro_author_img_url", true);
 						$avatar;
 						if(!empty($author_avatar_url)) {
 							$avatar =  $author_avatar_url;
 
-						} else { 			
+						} else {
 							$avatar_url = listingpro_get_avatar_url ( $author_id, $size = '94' );
 							$avatar =  $avatar_url;
 
@@ -91,8 +91,8 @@ if(!function_exists('listingpro_get_all_reviews')){
 							<figcaption>
 								<h4><?php the_author(); ?></h4>
 								<p><i class="fa fa-star"></i> <?php echo $user_reviews_count; ?> <?php esc_html_e('Reviews','listingpro'); ?></p>
-								
-								
+
+
 							</figcaption>
 						</figure>
 						<section class="details">
@@ -134,12 +134,12 @@ if(!function_exists('listingpro_get_all_reviews')){
 										$interVal = esc_html__('Interesting', 'listingpro');
 										$lolVal = esc_html__('Lol', 'listingpro');
 										$loveVal = esc_html__('Love', 'listingpro');
-										
+
 										$interests = listing_get_metabox_by_ID('review_'.$interVal.'',get_the_ID());
 										$Lols = listing_get_metabox_by_ID('review_'.$lolVal.'',get_the_ID());
 										$loves = listing_get_metabox_by_ID('review_'.$loveVal.'',get_the_ID());
-										
-										
+
+
 										if(empty($interests)){
 											$interests = 0;
 										}
@@ -159,22 +159,9 @@ if(!function_exists('listingpro_get_all_reviews')){
 													<i class="fa fa-thumbs-o-up"></i><?php echo esc_html__('Interesting', 'listingpro'); ?><span class="interests-score"><?php if(!empty($interests)) echo $interests; ?></span>
 													<span class="lp_state"></span>
 												</a>
-												
+
 											</li>
-											<li>
-												<a class="lol reviewRes" href="#" data-reacted ="<?php echo esc_html__('You already reacted', 'listingpro'); ?>" data-restype='<?php echo $lolVal; ?>' data-id='<?php the_ID(); ?>' data-score='<?php echo esc_attr($Lols); ?>'>
-													<i class="fa fa-smile-o"></i><?php echo esc_html__('Lol', 'listingpro'); ?><span class="interests-score"><?php if(!empty($Lols)) echo $Lols; ?></span>
-													<span class="lp_state"></span>
-												</a>
-												
-											</li>
-											<li>
-												<a class="love reviewRes" href="#" data-reacted ="<?php echo esc_html__('You already reacted', 'listingpro'); ?>" data-restype='<?php echo $loveVal; ?>' data-id='<?php the_ID(); ?>' data-id='<?php the_ID(); ?>' data-score='<?php echo esc_attr($loves); ?>'>
-													<i class="fa fa-heart-o"></i><?php echo esc_html__('Love', 'listingpro'); ?><span class="interests-score"><?php if(!empty($loves)) echo $loves; ?></span>
-													<span class="lp_state"></span>
-												</a>
-												
-											</li>
+
 											<?php
 											if( $showReport==true && is_user_logged_in() ){ ?>
 													<li id="lp-report-review">
@@ -186,7 +173,7 @@ if(!function_exists('listingpro_get_all_reviews')){
 								</div>
 							</div>
 						</section>
-						
+
 						<?php if(!empty($review_reply)) { ?>
 							<section class="details detail-sec">
 								<div class="owner-response">
@@ -196,7 +183,7 @@ if(!function_exists('listingpro_get_all_reviews')){
 											<time><?php echo $review_reply_time; ?></time>
 										<?php } ?>
 											<p><?php echo $review_reply; ?></p>
-										
+
 								</div>
 							</section>
 							<?php } ?>
@@ -209,8 +196,8 @@ if(!function_exists('listingpro_get_all_reviews')){
 				} else {}
 			//}
 			echo '</div>';
-		} 
-		
+		}
+
 	}
 }
 
@@ -218,7 +205,7 @@ if(!function_exists('listingpro_get_all_reviews')){
 
 if(!function_exists('listingpro_get_all_reviews_app_view')){
     function listingpro_get_all_reviews_app_view($postid){
-		
+
 		global $listingpro_options;
 		$showReport = true;
 		if( isset($listingpro_options['lp_detail_page_review_report_button']) ){
@@ -226,7 +213,7 @@ if(!function_exists('listingpro_get_all_reviews_app_view')){
 				$showReport = false;
 			}
 		}
-		
+
         ?>
         <?php
         $key = 'reviews_ids';
@@ -376,9 +363,9 @@ if(!function_exists('listingpro_get_all_reviews_app_view')){
 											if( $showReport==true && is_user_logged_in() ){ ?>
 												<li id="lp-report-review">
 													<a data-postid="<?php echo get_the_ID(); ?>"  data-reportedby="<?php echo $currentUserId; ?>" data-posttype="reviews" href="#" id="lp-report-this-review" class="report"><i class="fa fa-flag" aria-hidden="true"></i><?php esc_html_e('Report','listingpro'); ?></a>
-												</li>	
+												</li>
 										<?php } ?>
-										
+
                                     </ul>
                                 </form>
                             </div>
