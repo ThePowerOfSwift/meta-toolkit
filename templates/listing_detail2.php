@@ -309,7 +309,8 @@ if ( have_posts() ) {
 											case 'lp_quicks_section': get_template_part( 'templates/single-list/listing-details-style1/sidebar/quicks' );
 											break;
 
-
+											case 'lp_leadform_section': get_template_part( 'templates/single-list/listing-details-style1/sidebar/leadform' );
+											break;
 
 
 
