@@ -44,8 +44,8 @@ if (!function_exists('ajax_search_term')) {
         if (empty($features)) {
             $features = listingpro_get_term_meta($parent, 'lp_category_tags');
         }
-		
-		
+
+
 		/* for sorting  creating array*/
 		if(!empty($features)){
 			foreach ($features as $feature) {
@@ -53,30 +53,30 @@ if (!function_exists('ajax_search_term')) {
                 if (!empty($terms)) {
 					$sortedFeatuers[$feature] = $terms->name;
 				}
-				
+
 			}
 		}
-		
+
         if (!empty($sortedFeatuers)) {
 			sort($sortedFeatuers);
-            
+
             foreach($sortedFeatuers as $featureName) {
                 $terms = get_term_by('name', $featureName, 'features');
                 if (!empty($terms)) {
 					$featurCount = lp_count_postcount_taxonomy_term_byID('listing','features', $terms->term_id);
-					
+
 					if(!empty($featurCount)){
 						$hasfeature = true;
 					}
 					if($hasfeature==true && $showdivwrap == true){
-						
+
 						$tagsHTML = '<div class="form-inline lp-features-filter tags-area"><div class="form-group"><div class="input-group margin-right-0"><ul>';
-						
+
 						$showdivwrap = false;
 					}
-					
+
 						if(!empty($featurCount)){
-							
+
 						$tagsHTML .= '<li>';
 						$tagsHTML .= '<div class="pad-bottom-10 checkbox">';
 						$tagsHTML .= '<input type="checkbox" name="searchtags[' . $count . ']" id="check_' . $count . '" class="searchtags" value="' . $terms->term_id . '">';
@@ -84,9 +84,9 @@ if (!function_exists('ajax_search_term')) {
 						$tagsHTML .= '</div>';
 						$tagsHTML .= '</li>';
 					}
-					
+
                     $count++;
-					
+
                 }
             }
 			if($hasfeature==true){
@@ -95,7 +95,7 @@ if (!function_exists('ajax_search_term')) {
 				$tagsHTML .= '</div>';
 				$tagsHTML .= '</div>';
 			}
-            
+
         }
         $term_group_result = json_encode(array(
             'html' => $tagsHTML
@@ -110,7 +110,7 @@ if (!function_exists('ajax_search_tags')) {
     function ajax_search_tags()
     {
         global $listingpro_options;
-		
+
 		$lporderby = 'date';
 		$lporders = 'DESC';
 		if( isset($listingpro_options['lp_archivepage_listingorder']) ){
@@ -119,37 +119,37 @@ if (!function_exists('ajax_search_tags')) {
 		if( isset($listingpro_options['lp_archivepage_listingorderby']) ){
 			$lporderby = $listingpro_options['lp_archivepage_listingorderby'];
 		}
-		
+
 		if($lporderby=="rand"){
 			$lporders = '';
 		}
-		
+
 		$defSquery = '';
 		$lpDefaultSearchBy = 'title';
 		if( isset($listingpro_options['lp_default_search_by']) ){
 			$lpDefaultSearchBy = $listingpro_options['lp_default_search_by'];
 		}
-		
+
 		$pageno           = '';
         if (isset($_POST['pageno'])) {
             $pageno = $_POST['pageno'];
         }
-		
+
 		/* for radious filter */
 		$sloc_address       = ( isset( $_POST[ 'sloc_address' ] ) ) ? $_POST[ 'sloc_address' ] : '';
 		$my_bounds_ne_lat   = ( isset( $_POST[ 'my_bounds_ne_lat' ] ) ) ? $_POST[ 'my_bounds_ne_lat' ] : '';
 		$my_bounds_ne_lng   = ( isset( $_POST[ 'my_bounds_ne_lng' ] ) ) ? $_POST[ 'my_bounds_ne_lng' ] : '';
 		$my_bounds_sw_lat   = ( isset( $_POST[ 'my_bounds_sw_lat' ] ) ) ? $_POST[ 'my_bounds_sw_lat' ] : '';
 		$my_bounds_sw_lng   = ( isset( $_POST[ 'my_bounds_sw_lng' ] ) ) ? $_POST[ 'my_bounds_sw_lng' ] : '';
-		
+
 		$units = $listingpro_options['lp_nearme_filter_param'];
 		if(empty($units)){
 			$units = 'km';
 		}
-	
-		
+
+
 		$squery = '';
-		
+
 		$latlongfilter = false;
 		$latlongArray = array();
 		$openNowArray = array();
@@ -161,11 +161,11 @@ if (!function_exists('ajax_search_tags')) {
 		if(isset($_POST['clong'])){
 			$clong = sanitize_text_field($_POST['clong']);
 		}
-		
+
         $info                   = array('');
         $info['tag_name']         = $_POST['tag_name'];
         $info['cat_id']           = sanitize_text_field($_POST['cat_id']);
-		
+
 		if(isset($_POST['loc_id'])){
 			if( is_numeric($_POST['loc_id'] ) ){
 				$info['loc_id']    = ( $sloc_address != '' || $my_bounds_ne_lat != '' ) ? '': sanitize_text_field($_POST['loc_id']);
@@ -176,7 +176,7 @@ if (!function_exists('ajax_search_tags')) {
 				$info['loc_id']           = ( $sloc_address != '' || $my_bounds_ne_lat != '' ) ? '': $loc_ID;
 			}
 		}
-        
+
         $info['listStyle']        = sanitize_text_field($_POST['list_style']);
         $info['inexpensive']      = sanitize_text_field($_POST['inexpensive']);
         $info['moderate']         = sanitize_text_field($_POST['moderate']);
@@ -234,7 +234,7 @@ if (!function_exists('ajax_search_tags')) {
                 'terms' => $info['loc_id']
             );
         }
-		
+
 		if( !empty($info['lp_s_tag']) && isset($info['lp_s_tag'])){
 			$lpsTag = $info['lp_s_tag'];
 			$searchtagQuery = array(
@@ -244,7 +244,7 @@ if (!function_exists('ajax_search_tags')) {
 				'operator'=> 'IN' //Or 'AND' or 'NOT IN'
 			);
 		}
-		
+
 		if(isset($_POST['skeyword'])){
 			if( (empty($info['lp_s_tag']) || !isset($info['lp_s_tag'])) && (empty($info['cat_id']) || !isset($info['cat_id'])) ){
 				$squery     = sanitize_text_field($_POST['skeyword']);
@@ -268,7 +268,7 @@ if (!function_exists('ajax_search_tags')) {
 		}
         /* added by zaheer on 13 march */
         $orderBy        = $lporderby;
-		
+
         $rateArray      = '';
         $reviewedArray  = '';
         $viewedArray    = array();
@@ -282,9 +282,9 @@ if (!function_exists('ajax_search_tags')) {
                 'key' => $info['averageRate'],
                 'compare' => 'EXIST'
             );
-			
+
 			$lporders = '';
-			
+
         }
 		if (!empty($info['mostviewed'])) {
             $orderBy       = 'meta_value_num';
@@ -358,7 +358,7 @@ if (!function_exists('ajax_search_tags')) {
                 )
             );
         }
-		
+
 		$listingperpage = '';
 		if(isset($listingpro_options['listing_per_page']) && !empty($listingpro_options['listing_per_page'])){
 			$listingperpage = $listingpro_options['listing_per_page'];
@@ -366,18 +366,18 @@ if (!function_exists('ajax_search_tags')) {
 		else{
 			$listingperpage = 10;
 		}
-		
+
 		/* if nearme is on */
 		$listingperpageMain = '';
 		if( (!empty($clat) && !empty($clong)) || $listing_time=="open" ){
-			
+
 			$listingperpageMain = -1;
-			
+
 		}else{
 			$listingperpageMain = $listingperpage;
 		}
 		/* end if nearme is on */
-		
+
         /* added by zaheer on 13 march */
         $searchQuery = '';
         $TxQuery     = array(
@@ -409,10 +409,10 @@ if (!function_exists('ajax_search_tags')) {
                 $locQuery
             )
         );
-		
+
 		$lp_lat = '';
 		$lp_lng = '';
-		
+
         $my_query        = null;
         $output          = null;
         $result          = null;
@@ -443,19 +443,19 @@ if (!function_exists('ajax_search_tags')) {
 			} */
             while ($my_query->have_posts()):
                 $my_query->the_post();
-				
+
 				/* ///////radious filter starts//////// */
 				$flag   = true;
 				if ( (isset( $_POST[ 'sloc_address' ] ) && $_POST[ 'sloc_address' ] != '' ) || (!empty($clat) && !empty($clong))) {
-					
+
 					if(!empty($clat) && !empty($clong)){
 						$my_bounds_ne_lat = $clat;
 						$my_bounds_ne_lng = $clong;
-						
+
 						$my_bounds_sw_lat = $clat;
 						$my_bounds_sw_lng = $clong;
 					}
-					
+
 					$lp_lat = listing_get_metabox_by_ID('latitude', get_the_ID());
 					$lp_lng = listing_get_metabox_by_ID('longitude', get_the_ID());
 
@@ -469,7 +469,7 @@ if (!function_exists('ajax_search_tags')) {
 				  }
 
 					//$latlongfilter = true;
-					
+
 				}
 
 				//Zoom Search
@@ -481,11 +481,11 @@ if (!function_exists('ajax_search_tags')) {
 				  }
 				}
 				/* ///////radious filter end//////// */
-				
+
                 if ($listing_time == 'open') {
                     $openStatus = listingpro_check_time(get_the_ID(), true);
                     if ($openStatus == 'open') {
-						
+
 						$this_lat = listing_get_metabox_by_ID('latitude',get_the_ID());
 						$this_long = listing_get_metabox_by_ID('longitude',get_the_ID());
 						if( !empty($clat) && !empty($clong) ){
@@ -496,9 +496,9 @@ if (!function_exists('ajax_search_tags')) {
 									$latlongArray[get_the_ID()] = $calDistance['distance'];
 								}
 							}
-							
+
 						}
-						
+
 						if($latlongfilter==false){
 							$optenTimeArray[get_the_ID()] = get_the_ID();
 							/* ob_start();
@@ -511,12 +511,12 @@ if (!function_exists('ajax_search_tags')) {
 							else
 							{
 								get_template_part('listing-loop');
-							}							
+							}
 							$htmlOutput .= ob_get_contents();
 							ob_end_clean();
 							ob_flush(); */
 						}
-                        
+
                     }
                 } else {
 					$this_lat = listing_get_metabox_by_ID('latitude',get_the_ID());
@@ -529,7 +529,7 @@ if (!function_exists('ajax_search_tags')) {
 								$latlongArray[get_the_ID()] = $calDistance['distance'];
 							}
 						}
-						
+
 					}
 					if($latlongfilter==false){
 						ob_start();
@@ -542,7 +542,7 @@ if (!function_exists('ajax_search_tags')) {
 						else
 						{
 							get_template_part('listing-loop');
-						}							
+						}
 						$htmlOutput .= ob_get_contents();
 						ob_end_clean();
 						ob_flush();
@@ -550,8 +550,8 @@ if (!function_exists('ajax_search_tags')) {
                 }
             endwhile;
             wp_reset_query();
-			
-			
+
+
 			if($latlongfilter==true){
 						$keysArrray = array();
 						if(!empty($latlongArray)){
@@ -560,8 +560,8 @@ if (!function_exists('ajax_search_tags')) {
 								$keysArrray [] = $key;
 							}
 						}
-						
-						
+
+
 					$argss            = array(
 					'post_type' => $type,
 					'posts_per_page' => $listingperpage,
@@ -569,7 +569,7 @@ if (!function_exists('ajax_search_tags')) {
 					'post__in' => $keysArrray,
 					'orderby'        => 'post__in',
 					'order'          => 'ASC'
-					
+
 					);
 					$my_query        = null;
 					$my_query        = new WP_Query($argss);
@@ -577,7 +577,7 @@ if (!function_exists('ajax_search_tags')) {
 					 if ($my_query->have_posts()) {
 						$listing_mobile_view    =   $listingpro_options['single_listing_mobile_view'];
 						if( $listing_mobile_view == 'app_view' && wp_is_mobile() )
-						{ 
+						{
 							$htmlOutput .=  '<div class="map-view-list-container">';
 						   while ($my_query->have_posts()):
 							   $my_query->the_post();
@@ -589,15 +589,15 @@ if (!function_exists('ajax_search_tags')) {
 						   wp_reset_query();
 						   $htmlOutput .=  '</div>';
 						}
-						 
+
 						while ($my_query->have_posts()):
-							
+
 							$my_query->the_post();
 							$this_lat = listing_get_metabox_by_ID('latitude',get_the_ID());
 							$this_long = listing_get_metabox_by_ID('longitude',get_the_ID());
-							
+
 							$calDistance = GetDrivingDistance($clat, $this_lat, $clong, $this_long, $units);
-							
+
 							if ( isset( $_POST[ 'sloc_address' ] ) && $_POST[ 'sloc_address' ] != '' ) {
 							}else{
 								if(!empty($calDistance['distance'])){
@@ -615,14 +615,14 @@ if (!function_exists('ajax_search_tags')) {
 							else
 							{
 								get_template_part('listing-loop');
-							}							
+							}
 							$htmlOutput .= ob_get_contents();
 							ob_end_clean();
 							ob_flush();
 							if(!empty($calDistance['distance'])){
 								$htmlOutput.='</div>';
 							}
-							
+
 						endwhile;
 						wp_reset_query();
 					 }
@@ -635,8 +635,8 @@ if (!function_exists('ajax_search_tags')) {
 								$keysArrray [] = $key;
 							}
 						}
-						
-						
+
+
 					$argss            = array(
 					'post_type' => $type,
 					'posts_per_page' => $listingperpage,
@@ -644,7 +644,7 @@ if (!function_exists('ajax_search_tags')) {
 					'post__in' => $keysArrray,
 					'orderby'        => 'post__in',
 					'order'          => 'ASC'
-					
+
 					);
 					$my_query        = null;
 					$my_query        = new WP_Query($argss);
@@ -652,7 +652,7 @@ if (!function_exists('ajax_search_tags')) {
 					 if ($my_query->have_posts()) {
 						$listing_mobile_view    =   $listingpro_options['single_listing_mobile_view'];
 						if( $listing_mobile_view == 'app_view' && wp_is_mobile() )
-						{ 
+						{
 							$htmlOutput .=  '<div class="map-view-list-container">';
 						   while ($my_query->have_posts()):
 							   $my_query->the_post();
@@ -664,11 +664,11 @@ if (!function_exists('ajax_search_tags')) {
 						   wp_reset_query();
 						   $htmlOutput .=  '</div>';
 						}
-						 
+
 						while ($my_query->have_posts()):
-							
+
 							$my_query->the_post();
-							
+
 							ob_start();
 							global $listingpro_options;
 							$listing_mobile_view    =   $listingpro_options['single_listing_mobile_view'];
@@ -679,17 +679,17 @@ if (!function_exists('ajax_search_tags')) {
 							else
 							{
 								get_template_part('listing-loop');
-							}							
+							}
 							$htmlOutput .= ob_get_contents();
 							ob_end_clean();
 							ob_flush();
-							
-							
+
+
 						endwhile;
 						wp_reset_query();
 					 }
 			}
-		
+
             if (empty($htmlOutput)) {
                 $output .= '
 
@@ -703,7 +703,7 @@ if (!function_exists('ajax_search_tags')) {
 							<p>' . esc_html__('Sorry! There are no listings matching your search.', 'listingpro') . '</p>
 
 
-							<p>' . esc_html__('Try changing your search filters or ', 'listingpro') . '<a href="' . $currentURL . '">' . esc_html__('Reset Filter', 'listingpro') . '</a></p>
+							<p>' . esc_html__('Try changing your search filters or ', 'listingpro') . '<a href="/">' . esc_html__('Start over', 'listingpro') . '</a></p>
 
 
 						</div>
@@ -788,9 +788,9 @@ if (!function_exists('listingpro_suggested_search')) {
 				$lpsearchMode = "keyword";
 			}
 		}
-		
-		
-		
+
+
+
         if (empty($qString)) {
             global $listingpro_options;
             $cats;
@@ -822,61 +822,61 @@ if (!function_exists('listingpro_suggested_search')) {
                 "suggestions" => $output
             ));
             die($query_suggestion);
-			
+
         }else{
-			
-			
+
+
 			$excludeTitleFromSearch = 'no';
 			if( isset($listingpro_options['lp_exclude_listingtitle_switcher']) ){
 				if( !empty($listingpro_options['lp_exclude_listingtitle_switcher']) && $listingpro_options['lp_exclude_listingtitle_switcher']==1 ){
 					$excludeTitleFromSearch = 'yes';
 				}
 			}
-			
+
 			if($excludeTitleFromSearch=="yes"){
-				
+
 				/* for low servers resources */
 				$argsTaxs = array(
-					'orderby'           => 'count', 
+					'orderby'           => 'count',
 					'order'             => 'ASC',
-					'hide_empty'        => true, 
-				); 
+					'hide_empty'        => true,
+				);
 				$tagTerms = get_terms('list-tags', $argsTaxs);
 				$catTerms = get_terms('listing-category', $argsTaxs);
-				
+
 				if(!empty($tagTerms)){
 					foreach ($tagTerms as $tag) {
-								
+
 						$tagTermMatch = false;
 						$tagTernName  = strtolower($tag->name);
-						
+
 						if( $lpsearchMode == "keyword" ){
 							preg_match("/[$qString]/", "$tagTernName", $lpMatches, PREG_OFFSET_CAPTURE);
 							$lpresCnt = count($lpMatches);
 							if( $lpresCnt > 0 ){
 								$tagTermMatch = true;
 							}
-							
+
 						}else{
 							$tagTermMatch = strpos($tagTernName, $qString);
 						}
-						
+
 						if ( $tagTermMatch !== false ) {
 							$TAGOutput[$tag->term_id]    = '<li class="lp-wrap-tags" data-tagid="' . $tag->term_id . '"><span class="lp-s-tag">' . $tag->name . '</span></li>';
 						}
 					}
 				}
-				
+
 				if(!empty($catTerms)){
-					
+
 					foreach ($catTerms as $cat) {
 						$catIcon = listingpro_get_term_meta($cat->term_id, 'lp_category_image');
 						if (!empty($catIcon)) {
 							$catIcon = '<img class="lp-s-caticon" src="' . $catIcon . '" />';
 						}
-						
+
 						$catTermMatch = false;
-								
+
 						$catTernName  = $cat->name;
 						$catTernName  = strtolower($catTernName);
 						if( $lpsearchMode == "keyword" ){
@@ -885,23 +885,23 @@ if (!function_exists('listingpro_suggested_search')) {
 							if( $lpresCnt > 0 ){
 								$catTermMatch = true;
 							}
-							
+
 						}else{
 							$catTermMatch = strpos($catTernName, $qString);
 						}
-						
+
 						if ( $catTermMatch !== false ) {
 							$CATOutput[$cat->term_id] = '<li class="lp-wrap-cats" data-catid="' . $cat->term_id . '">' . $catIcon . '<span class="lp-s-cat">' . $cat->name . '</span></li>';
 						}
-						
+
 					}
-					
+
 				}
-				
-				
-				
+
+
+
 			}else{
-				
+
 				/* for server with good resources */
 				$args     = array(
 					'posts_per_page' => -1, // Number of related posts to display.
@@ -934,30 +934,30 @@ if (!function_exists('listingpro_suggested_search')) {
 								$catIcon = '<img class="lp-s-caticon" src="' . $catIcon . '" />';
 							}
 							foreach ($tagTerms as $tag) {
-								
+
 								$tagTermMatch = false;
 								$tagTernName  = strtolower($tag->name);
-								
+
 								if( $lpsearchMode == "keyword" ){
 									preg_match("/[$qString]/", "$tagTernName", $lpMatches, PREG_OFFSET_CAPTURE);
 									$lpresCnt = count($lpMatches);
 									if( $lpresCnt > 0 ){
 										$tagTermMatch = true;
 									}
-									
+
 								}else{
 									$tagTermMatch = strpos($tagTernName, $qString);
 								}
-								
+
 								if ( $tagTermMatch !== false ) {
 									$TAGOutput[$tag->term_id]    = '<li class="lp-wrap-tags" data-tagid="' . $tag->term_id . '"><span class="lp-s-tag">' . $tag->name . '</span></li>';
 									$TagCatOutput[] = '<li class="lp-wrap-catsntags" data-tagid="' . $tag->term_id . '" data-catid="' . $catName->term_id . '">' . $catIcon . '<span class="lp-s-tag">' . $tag->name . '</span><span> '.esc_html__('in', 'listingpro').' </span><span class="lp-s-cat">' . $catName->name . '</span></li>';
 								}
 							}
 							foreach ($catTerms as $cat) {
-								
+
 								$catTermMatch = false;
-								
+
 								$catTernName  = $cat->name;
 								$catTernName  = strtolower($catTernName);
 								if( $lpsearchMode == "keyword" ){
@@ -966,11 +966,11 @@ if (!function_exists('listingpro_suggested_search')) {
 									if( $lpresCnt > 0 ){
 										$catTermMatch = true;
 									}
-									
+
 								}else{
 									$catTermMatch = strpos($catTernName, $qString);
 								}
-								
+
 								if ( $catTermMatch !== false ) {
 									$CATOutput[$cat->term_id] = '<li class="lp-wrap-cats" data-catid="' . $cat->term_id . '">' . $catIcon . '<span class="lp-s-cat">' . $cat->name . '</span></li>';
 								}
@@ -978,30 +978,30 @@ if (!function_exists('listingpro_suggested_search')) {
 						}
 						if ( !empty($tagTerms) ) {
 							foreach ($tagTerms as $tag) {
-								
+
 								$tagTermMatch = false;
 								$tagTernName  = strtolower($tag->name);
-								
+
 								if( $lpsearchMode == "keyword" ){
 									preg_match("/[$qString]/", "$tagTernName", $lpMatches, PREG_OFFSET_CAPTURE);
 									$lpresCnt = count($lpMatches);
 									if( $lpresCnt > 0 ){
 										$tagTermMatch = true;
 									}
-									
+
 								}else{
 									$tagTermMatch = strpos($tagTernName, $qString);
 								}
-								
+
 								if ( $tagTermMatch !== false ) {
 									$TAGOutput[$tag->term_id]    = '<li class="lp-wrap-tags" data-tagid="' . $tag->term_id . '"><span class="lp-s-tag">' . $tag->name . '</span></li>';
 								}
 							}
 						}
-						
+
 						if( !empty($catTerms) ){
 							foreach ($catTerms as $cat) {
-								
+
 								$catTermMatch = false;
 								$catTernName  = $cat->name;
 								$catTernName  = strtolower($catTernName);
@@ -1011,7 +1011,7 @@ if (!function_exists('listingpro_suggested_search')) {
 									if( $lpresCnt > 0 ){
 										$catTermMatch = true;
 									}
-									
+
 								}else{
 									$catTermMatch = strpos($catTernName, $qString);
 								}
@@ -1020,7 +1020,7 @@ if (!function_exists('listingpro_suggested_search')) {
 								}
 							}
 						}
-						
+
 						$listThumb = '';
 						if (has_post_thumbnail()) {
 							$image = wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()), 'thumbnail');
@@ -1033,7 +1033,7 @@ if (!function_exists('listingpro_suggested_search')) {
 								$listThumb = '<img src="' . esc_html__('https://placeholdit.imgix.net/~text?txtsize=33&w=50&h=50', 'listingpro') . '" alt="">';
 							}
 						}
-						
+
 						$machTitles = false;
 						$listTitle  = get_the_title();
 						$listTitle  = strtolower($listTitle);
@@ -1043,7 +1043,7 @@ if (!function_exists('listingpro_suggested_search')) {
 							if( $lpresCnt > 0 ){
 								$machTitles = true;
 							}
-							
+
 						}else{
 							$machTitles = strpos($listTitle, $qString);
 						}
@@ -1054,8 +1054,8 @@ if (!function_exists('listingpro_suggested_search')) {
 					wp_reset_postdata();
 				}
 			}
-			
-			
+
+
             $TAGOutput    = array_unique($TAGOutput);
             $CATOutput    = array_unique($CATOutput);
             $TagCatOutput = array_unique($TagCatOutput);
@@ -1119,10 +1119,10 @@ if (!function_exists('listingpro_suggested_cats')) {
 /* ======================show cateogries on focus================ */
 
 	/* ============== ListingPro website visits ============ */
-	
+
 	add_action('wp_ajax_listingpro_website_visit',        'listingpro_website_visit');
 	add_action('wp_ajax_nopriv_listingpro_website_visit', 'listingpro_website_visit');
-	
+
 	if (!function_exists('listingpro_website_visit')) {
 		function listingpro_website_visit(){
 			$lpCountry = '';
@@ -1138,21 +1138,21 @@ if (!function_exists('listingpro_suggested_cats')) {
 				$current_user = wp_get_current_user();
 				$actor = $current_user->user_login;
 			}
-			
+
 			$visitorInfo = esc_html__('Country : ', 'listingpro');
 			$visitorInfo .= $lpCountry;
 			$visitorInfo .= esc_html__(' City : ', 'listingpro');
 			$visitorInfo .= $lpCity;
 			$visitorInfo .= esc_html__(' Zip : ', 'listingpro');
 			$visitorInfo .= $lpZip;
-			
+
 			$listing_id = $lp_id;
 			$listingData = get_post($listing_id);
 			$authID = $listingData->post_author;
 			//$currentdate = date("Y-m-d h:i:a");
 			//$currentdate = date("d-m-Y h:i:a");
 			$currentdate =  current_time('mysql');
-			
+
 			/* updating lead */
 			$leadsCount = '';
 			$leadsCount = get_user_meta( $authID, 'leads_count', true );
@@ -1174,11 +1174,11 @@ if (!function_exists('listingpro_suggested_cats')) {
 				'rating'	=>	'',
 				'time'	=>	$currentdate
 			));
-			
+
 			$updatedActivitiesData = array();
 			$lp_recent_activities = get_option( 'lp_recent_activities' );
 				if( $lp_recent_activities!=false ){
-					
+
 					$existingActivitiesData = get_option( 'lp_recent_activities' );
 					if (array_key_exists($authID, $existingActivitiesData)) {
 						$currenctActivityData = $existingActivitiesData[$authID];
@@ -1202,18 +1202,18 @@ if (!function_exists('listingpro_suggested_cats')) {
 					$updatedActivitiesData[$authID] = $activityData;
 				}
 				update_option( 'lp_recent_activities', $updatedActivitiesData );
-			
-			
-			
+
+
+
 			$lp_response = json_encode(array("success"=>"ok"));
 			die($lp_response);
 		}
 	}
 /* ============== ListingPro phone number clicked ============ */
-	
+
 	add_action('wp_ajax_listingpro_phone_clicked',        'listingpro_phone_clicked');
 	add_action('wp_ajax_nopriv_listingpro_phone_clicked', 'listingpro_phone_clicked');
-	
+
 	if (!function_exists('listingpro_phone_clicked')) {
 		function listingpro_phone_clicked(){
 			$lpCountry = '';
@@ -1229,22 +1229,22 @@ if (!function_exists('listingpro_suggested_cats')) {
 				$current_user = wp_get_current_user();
 				$actor = $current_user->user_login;
 			}
-			
+
 			$visitorInfo = esc_html__('Country : ', 'listingpro');
 			$visitorInfo .= $lpCountry;
 			$visitorInfo .= esc_html__(' City : ', 'listingpro');
 			$visitorInfo .= $lpCity;
 			$visitorInfo .= esc_html__(' Zip : ', 'listingpro');
 			$visitorInfo .= $lpZip;
-			
+
 			$listing_id = $lp_id;
 			$listingData = get_post($listing_id);
 			$authID = $listingData->post_author;
 			//$currentdate = date("Y-m-d h:i:a");
 			//$currentdate = date("d-m-Y h:i:a");
 			$currentdate =  current_time('mysql');
-			
-			
+
+
 			/* updating lead */
 			$leadsCount = '';
 			$leadsCount = get_user_meta( $authID, 'leads_count', true );
@@ -1266,11 +1266,11 @@ if (!function_exists('listingpro_suggested_cats')) {
 				'rating'	=>	'',
 				'time'	=>	$currentdate
 			));
-			
+
 			$updatedActivitiesData = array();
 			$lp_recent_activities = get_option( 'lp_recent_activities' );
 				if( $lp_recent_activities!=false ){
-					
+
 					$existingActivitiesData = get_option( 'lp_recent_activities' );
 					if (array_key_exists($authID, $existingActivitiesData)) {
 						$currenctActivityData = $existingActivitiesData[$authID];
@@ -1294,16 +1294,16 @@ if (!function_exists('listingpro_suggested_cats')) {
 					$updatedActivitiesData[$authID] = $activityData;
 				}
 				update_option( 'lp_recent_activities', $updatedActivitiesData );
-			
-			
-			
+
+
+
 			$lp_response = json_encode(array("success"=>"ok"));
 			die($lp_response);
 		}
 	}
-	
-	
-if(!function_exists('listingproc_inBounds')){	
+
+
+if(!function_exists('listingproc_inBounds')){
 	function listingproc_inBounds($pointLat, $pointLong, $boundsNElat, $boundsNElong, $boundsSWlat, $boundsSWlong) {
 		$eastBound = $pointLong < $boundsNElong;
 		$westBound = $pointLong > $boundsSWlong;
@@ -1320,7 +1320,7 @@ if(!function_exists('listingproc_inBounds')){
 }// listingproc_inBounds
 
 if(!function_exists('haversineGreatCircleDistance')){
-	
+
 	function haversineGreatCircleDistance( $latitudeFrom, $longitudeFrom, $latitudeTo, $longitudeTo, $earthRadius = 6371){
 	  $latFrom = deg2rad($latitudeFrom);
 	  $lonFrom = deg2rad($longitudeFrom);
