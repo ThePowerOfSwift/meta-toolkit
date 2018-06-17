@@ -113,11 +113,10 @@ if ( have_posts() ) {
 				<div class="container">
 					<div class="top-row-detail">
 						<div class="col-md-8 col-sm-8 col-xs-12 better-bread" id="better-breadcrumbs">
-							<?php /* if (function_exists('listingpro_breadcrumbs')) listingpro_breadcrumbs(); */ ?>
-							<ul><li><a href="http://alpha.toolkits.tools/">Home</a></li> <li><a href="http://alpha.toolkits.tools/?listing-category=improve-or-create">Improve or create something</a> </li><li><span>Designing for Behaviour Change Toolkit</span></li></ul>
+							<?php  if (function_exists('listingpro_breadcrumbs')) listingpro_breadcrumbs();  ?>
 						</div>
 						<div class="col-md-4 col-sm-4 col-xs-12">
-							<div class="post-meta-right-box text-right clearfix margin-top-20">
+							<div class="post-meta-right-box text-right clearfix">
 								<ul class="post-stat">
 									<?php
                                         $favrt  =   listingpro_is_favourite_new(get_the_ID());
@@ -160,7 +159,7 @@ if ( have_posts() ) {
 													}else {
 														echo '
 														<a href="'.get_the_permalink().'" >
-															<img src="'.esc_html__('https://placeholdit.imgix.net/~text?txtsize=33&w=372&h=400', 'listingpro').'" alt="">
+															<img src="'.esc_html__('https://placeholdit.imgix.net/~text?txtsize=33&w=540&h=340', 'listingpro').'" alt="">
 														</a>';
 													}
 											}elseif(!empty($deafaultFeatImg)){
@@ -170,7 +169,7 @@ if ( have_posts() ) {
 											}else {
 												echo '
 												<a href="'.get_the_permalink().'" >
-													<img src="'.esc_html__('https://placeholdit.imgix.net/~text?txtsize=33&w=372&h=400', 'listingpro').'" alt="">
+													<img src="'.esc_html__('https://placeholdit.imgix.net/~text?txtsize=33&w=540&h=340', 'listingpro').'" alt="">
 												</a>';
 											}
 										?>
@@ -186,7 +185,7 @@ if ( have_posts() ) {
 													}else {
 														echo '
 														<a href="'.get_the_permalink().'" >
-															<img src="'.esc_html__('https://placeholdit.imgix.net/~text?txtsize=33&w=372&h=240', 'listingpro').'" alt="">
+															<img src="'.esc_html__('https://placeholdit.imgix.net/~text?txtsize=33&w=540&h=340', 'listingpro').'" alt="">
 														</a>';
 													}
 											}elseif(!empty($deafaultFeatImg)){
@@ -196,7 +195,7 @@ if ( have_posts() ) {
 											}else {
 												echo '
 												<a href="'.get_the_permalink().'" >
-													<img src="'.esc_html__('https://placeholdit.imgix.net/~text?txtsize=33&w=372&h=240', 'listingpro').'" alt="">
+													<img src="'.esc_html__('https://placeholdit.imgix.net/~text?txtsize=33&w=540&h=340', 'listingpro').'" alt="">
 												</a>';
 											}
 										?>
