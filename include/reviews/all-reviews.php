@@ -29,11 +29,11 @@ if(!function_exists('listingpro_get_all_reviews')){
 				}
 			}
 			if(count($active_reviews_ids) == 1){
-				$label = esc_html__('Review for ','listingpro').get_the_title($postid);
+				$label = esc_html__('Feedback for ','listingpro').get_the_title($postid);
 			}else{
-				$label = esc_html__('Reviews for ','listingpro').get_the_title($postid);
+				$label = esc_html__('Feedback for ','listingpro').get_the_title($postid);
 			}
-			echo '<h3 class="comment-reply-title">'.count($active_reviews_ids).' '.$label.'</h3>';
+			echo '<h3 class="comment-reply-title">'.$label.'</h3>';
 		}
 		else{
 		}
