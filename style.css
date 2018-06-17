@@ -375,7 +375,8 @@ additional details
   top: 0;
 }
 
-span.tag-groups-tag {
+span.tag-groups-tag,
+span.tag-groups-tag span {
   color: #0D5DA0;
 }
 
