@@ -405,7 +405,10 @@ color:#FFF;
 }
 
 
+.listing-simple .post-with-map-container-right .search-row .lp-filter-inner {
+  margin-top: 0;
+}
 
-#lp_field_latitude {
+.mobile-map-space {
   display: none;
 }
