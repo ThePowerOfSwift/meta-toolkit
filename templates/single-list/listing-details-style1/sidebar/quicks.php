@@ -7,15 +7,15 @@
 	}else{
 		$plan_id = 'none';
 	}
-	
-	$price_show = get_post_meta( $plan_id, 'listingproc_price', true );
-	
-	
+
+	// $price_show = get_post_meta( $plan_id, 'listingproc_price', true );
+
+
 	$claimed_section = listing_get_metabox('claimed_section');
 	$listingpTo = listing_get_metabox('list_price_to');
 	$listingprice = listing_get_metabox_by_ID('list_price', $post->ID);
 	$listingpricestatus = listing_get_metabox_by_ID('price_status', $post->ID);
-	
+
 	$showClaim = true;
 	if(isset($listingpro_options['lp_listing_claim_switch'])){
 		if($listingpro_options['lp_listing_claim_switch']==1){
@@ -33,19 +33,19 @@
 			$showReport = false;
 		}
 	}
-	
-	
+
+
 	if($plan_id=="none"){
 		$price_show = 'true';
 	}
-	
+
 	$currentUserId = get_current_user_id();
-	
+
 ?>
 
 
-<?php 
-	
+<?php
+
 	$menuOption = false;
 	$menuTitle = '';
 	$menuImg = '';
@@ -55,10 +55,10 @@
 		$menuImg = $menuMeta['menu-img'];
 		$menuOption = true;
 	}
-	
+
 
 	if( (!empty($menuMeta) && $menuOption == true ) || !empty($listingpTo) || !empty($listingprice) ||  ($showClaim==true && $claimed_section != 'claimed') || $listingpricestatus!="notsay" ) { ?>
-	
+
 	<div class="widget-box listing-price">
 		<?php
 			if(!empty($menuMeta) && $menuOption == true){
@@ -78,10 +78,10 @@
 				</div>
 			</div>
 			<?php } ?>
-		
+
 		<div class="price-area">
-			
-			<?php 
+
+			<?php
 				if($price_show=="true"){
 					echo listingpro_price_dynesty($post->ID);
 				}
@@ -93,10 +93,10 @@
 					<span class="phone-icon">
 						<img class="icon icons8-Flag-2" width="20" height="20" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABAElEQVQ4T+1T0W2DUBDz3QTpBoyQERiBDZpJkAUDVN2gI6QbNBMkG4QNkgXgIotHlaYkNKjKV56EkLg7n5+xjWQREa8AsogwAEf0JzOzbUSs3f2T5PA9lcdfVpZl4+4Fyd1lC8kMQNF13UrgZvY+1qc5kisRE+BXVVX5zbX9QC5gAEszOwBodAvNRcQLgLWW/xnwfCHJhYAlzzljkZsFeO02T8Cp/zxdf4yG8lvbtlHX9Waa08+OgWFjZvtkTsVreGTaRaopfhuSMvPoSUl5kw937p5fyypJGVgpUZqUkn1CVFRV+06Ku3/MMrZkSaDNJetZgLe0fQLe67zf/f+u4QlxCbp3x7Q50wAAAABJRU5ErkJggg=="> <strong> <?php echo esc_html__('See something wrong? ', 'listingpro'); ?> </strong>
 					</span>
-					<a class="phone-number" data-postid="<?php echo $post->ID; ?>"  data-reportedby="<?php echo $currentUserId; ?>" data-posttype="listing" href="#" id="lp-report-this-listing"> <?php echo esc_html__('Report Now!', 'listingpro'); ?></a>		
+					<a class="phone-number" data-postid="<?php echo $post->ID; ?>"  data-reportedby="<?php echo $currentUserId; ?>" data-posttype="listing" href="#" id="lp-report-this-listing"> <?php echo esc_html__('Report Now!', 'listingpro'); ?></a>
 				</div>
 			<?php } ?>
-			
+
 		</div>
 		<?php get_template_part('templates/single-list/claim-form' ); ?>
 	</div>
