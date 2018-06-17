@@ -214,6 +214,12 @@ if ( have_posts() ) {
 								<?php } ?>
 							<?php } ?>
 
+							<?php if(!empty($website)) {
+										if($website_show=="true"){?>
+										<p><?php echo $website_text; ?></p>
+								<?php } ?>
+							<?php } ?>
+
 							<?php
 								$pagelayoutOption = $listingpro_options['lp-detail-page-layout-content']['general'];
 								if ($pagelayoutOption):
