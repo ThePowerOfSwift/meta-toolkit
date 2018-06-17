@@ -113,8 +113,8 @@ if ( have_posts() ) {
 				<div class="container">
 					<div class="top-row-detail">
 						<div class="col-md-8 col-sm-8 col-xs-12 better-bread" id="better-breadcrumbs">
-
-							<?php if (function_exists('listingpro_breadcrumbs')) listingpro_breadcrumbs(); ?>
+							<?php /* if (function_exists('listingpro_breadcrumbs')) listingpro_breadcrumbs(); */ ?>
+							<ul><li><a href="http://alpha.toolkits.tools/">Home</a></li> <li><a href="http://alpha.toolkits.tools/?listing-category=improve-or-create">Improve or create something</a> </li><li><span>Designing for Behaviour Change Toolkit</span></li></ul>
 						</div>
 						<div class="col-md-4 col-sm-4 col-xs-12">
 							<div class="post-meta-right-box text-right clearfix margin-top-20">
