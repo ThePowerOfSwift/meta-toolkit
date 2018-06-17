@@ -397,6 +397,8 @@ span.tag-groups-tag a:active {
   color: #0D5DA0;
 }
 
+
+span.tag-groups-tag a:hover span,
 span.tag-groups-tag a:hover {
 background:#0D5DA0;
 color:#FFF;
