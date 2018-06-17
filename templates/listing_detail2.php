@@ -234,7 +234,7 @@ if ( have_posts() ) {
 
 					</div>
 					<div class="row">
-						<div class="col-md-8 col-sm-8 col-xs-12">
+						<div class="col-md-4 col-sm-4 col-xs-12">
 							<div class="post-meta-left-box">
 								<?php if (function_exists('listingpro_breadcrumbs')) listingpro_breadcrumbs(); ?>
 
@@ -299,7 +299,7 @@ if ( have_posts() ) {
 
 							</div>
 						</div>
-						<div class="col-md-4 col-sm-4 col-xs-12">
+						<div class="col-md-8 col-sm-8 col-xs-12">
 							<h1><?php the_title(); ?> <?php echo $claim; ?></h1>
 							<?php if(!empty($tagline_text)) {
 										if($tagline_show=="true"){?>
