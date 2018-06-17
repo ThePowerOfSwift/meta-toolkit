@@ -298,17 +298,20 @@ if ( have_posts() ) {
 										switch($key) {
 
 
-											case 'lp_quicks_section': get_template_part( 'templates/single-list/listing-details-style1/sidebar/quicks' );
+
+											case 'lp_additional_section': get_template_part( 'templates/single-list/listing-details-style1/sidebar/additional' );
 											break;
+
 
 											case 'lp_sidebarelemnts_section': get_template_part( 'templates/single-list/listing-details-style1/sidebar/def-sidebar' );
 											break;
 
-
-
-
-											case 'lp_additional_section': get_template_part( 'templates/single-list/listing-details-style1/sidebar/additional' );
+											case 'lp_quicks_section': get_template_part( 'templates/single-list/listing-details-style1/sidebar/quicks' );
 											break;
+
+
+
+
 
 										}
 									}
