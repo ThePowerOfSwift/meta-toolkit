@@ -117,55 +117,11 @@ if ( have_posts() ) {
 								  <div class="double-bounce1"></div>
 								  <div class="double-bounce2"></div>
 								</div>
+<!--
 								<div class="single-page-slider-container style1">
-									<div class="row">
-										<div class="">
-											<div class="listing-slide img_<?php echo esc_attr($numImages); ?>" data-images-num="<?php echo esc_attr($numImages); ?>">
-												<?php
-													//$imgSize = 'listingpro-gal';
-													require_once (THEME_PATH . "/include/aq_resizer.php");
-													$imgSize = 'listingpro-detail_gallery';
-
-													foreach($imgIDs as $imgID){
-														
-														if($numImages == 3){
-															$img_url = wp_get_attachment_image_src( $imgID, 'full');
-															$imgurl = aq_resize( $img_url[0], '550', '420', true, true, true);
-															$imgSrc = $imgurl;
-														}elseif($numImages == 2){
-															$img_url = wp_get_attachment_image_src( $imgID, 'full');
-															$imgurl = aq_resize( $img_url[0], '800', '400', true, true, true);
-															$imgSrc = $imgurl;
-														}elseif($numImages == 1){
-															$img_url = wp_get_attachment_image_src( $imgID, 'full');
-															$imgurl = aq_resize( $img_url[0], '1170', '400', true, true, true);
-															$imgSrc = $imgurl;
-														}elseif($numImages == 4){
-															$img_url = wp_get_attachment_image_src( $imgID, 'full');
-															$imgurl = aq_resize( $img_url[0], '400', '400', true, true, true);
-															$imgSrc = $imgurl;
-														}else {
-															/* $imgurl = wp_get_attachment_image_src( $imgID, $imgSize);
-															$imgSrc = $imgurl[0]; */
-															$img_url = wp_get_attachment_image_src( $imgID, 'full');
-															$imgurl = aq_resize( $img_url[0], '350', '450', true, true, true);
-															$imgSrc = $imgurl;
-														}
-														$imgFull = wp_get_attachment_image_src( $imgID, 'full');
-														if(!empty($imgurl[0])){
-															echo '
-															<div class="slide">
-																<a href="'. $imgFull[0] .'" rel="prettyPhoto[gallery1]">
-																	<img src="'. $imgSrc .'" alt="'.get_the_title().'" />
-																</a>
-															</div>';
-														}
-													}
-												?>
-											</div>
-										</div>
-									</div>
+								
 								</div>
+-->
 							</div>
 							<?php
 						} else{
@@ -246,6 +202,67 @@ if ( have_posts() ) {
 						<div class="col-md-8 col-sm-8 col-xs-12">
 							<div class="post-meta-left-box">
 								<?php if (function_exists('listingpro_breadcrumbs')) listingpro_breadcrumbs(); ?>
+								
+								<!-- insert feature image -->
+								
+								
+								<div class="lp-grid-box-thumb">
+									<div class="show-img">
+										<?php
+											if ( has_post_thumbnail()) {
+												$image = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID()), 'listingpro-blog-grid2' );
+													if(!empty($image[0])){
+														echo "<a href='".get_the_permalink()."' >
+																<img src='" . $image[0] . "' />
+															</a>";
+													}else {
+														echo '
+														<a href="'.get_the_permalink().'" >
+															<img src="'.esc_html__('https://placeholdit.imgix.net/~text?txtsize=33&w=372&h=400', 'listingpro').'" alt="">
+														</a>';
+													}	
+											}elseif(!empty($deafaultFeatImg)){
+												echo "<a href='".get_the_permalink()."' >
+													<img src='" . $deafaultFeatImg . "' />
+												</a>";
+											}else {
+												echo '
+												<a href="'.get_the_permalink().'" >
+													<img src="'.esc_html__('https://placeholdit.imgix.net/~text?txtsize=33&w=372&h=400', 'listingpro').'" alt="">
+												</a>';
+											}
+										?>
+									</div>
+									<div class="hide-img listingpro-list-thumb">
+										<?php
+											if ( has_post_thumbnail()) {
+												$image = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID()), 'listingpro-blog-grid' );
+													if(!empty($image[0])){
+														echo "<a href='".get_the_permalink()."' >
+																<img src='" . $image[0] . "' />
+															</a>";
+													}else {
+														echo '
+														<a href="'.get_the_permalink().'" >
+															<img src="'.esc_html__('https://placeholdit.imgix.net/~text?txtsize=33&w=372&h=240', 'listingpro').'" alt="">
+														</a>';
+													}	
+											}elseif(!empty($deafaultFeatImg)){
+												echo "<a href='".get_the_permalink()."' >
+													<img src='" . $deafaultFeatImg . "' />
+												</a>";
+											}else {
+												echo '
+												<a href="'.get_the_permalink().'" >
+													<img src="'.esc_html__('https://placeholdit.imgix.net/~text?txtsize=33&w=372&h=240', 'listingpro').'" alt="">
+												</a>';
+											}
+										?>
+									</div>
+							   	</div>
+								
+								<!-- end of feature image -->
+								
 								<h1><?php the_title(); ?> <?php echo $claim; ?></h1>
 								<?php if(!empty($tagline_text)) {
 											if($tagline_show=="true"){?>
