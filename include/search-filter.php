@@ -703,7 +703,7 @@ if (!function_exists('ajax_search_tags')) {
 							<p>' . esc_html__('Sorry! There are no listings matching your search.', 'listingpro') . '</p>
 
 
-							<p>' . esc_html__('Try changing your search filters or ', 'listingpro') . '<a href="' . $currentURL . '">' . esc_html__('Reset Filter', 'listingpro') . '</a></p>
+							<p>' . esc_html__('Try changing your search filters or ', 'listingpro') . '<a href="' . $currentURL . '">' . esc_html__('Start over', 'listingpro') . '</a></p>
 
 
 						</div>
@@ -726,7 +726,7 @@ if (!function_exists('ajax_search_tags')) {
 							<p>' . esc_html__('Sorry! There are no listings matching your search.', 'listingpro') . '</p>
 
 
-							<p>' . esc_html__('Try changing your search filters or ', 'listingpro') . '<a href="' . $currentURL . '">' . esc_html__('Reset Filter', 'listingpro') . '</a></p>
+							<p>' . esc_html__('Try changing your search filters or ', 'listingpro') . '<a href="' . $currentURL . '">' . esc_html__('Start over', 'listingpro') . '</a></p>
 
 
 						</div>
