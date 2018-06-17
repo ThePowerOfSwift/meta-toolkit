@@ -225,27 +225,9 @@ if ( have_posts() ) {
 									<li class="reviews sbutton">
 										<?php listingpro_sharing(); ?>
 									</li>
-									<li>
-										<span class="rating-section">
-											<?php
-												$NumberRating = listingpro_ratings_numbers($post->ID);
-												if($NumberRating != 0){
-													echo lp_cal_listing_rate(get_the_ID());
-											?>
-													<span>
-														<small><?php echo $NumberRating; ?></small>
-														<br>
-														<?php echo esc_html__('Ratings', 'listingpro'); ?>
-													</span>
-											<?php
-												}else{
-													echo lp_cal_listing_rate(get_the_ID());
-												}
-											?>
-										</span>
-									</li>
+	
 								</ul>
-								
+
 							</div>
 						</div>
 
