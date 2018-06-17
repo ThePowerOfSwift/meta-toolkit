@@ -107,100 +107,8 @@ if ( have_posts() ) {
 		?>
 		<!--==================================Section Open=================================-->
 		<section class="aliceblue listing-second-view">
-			<!--=======Galerry=====-->
-			<?php
-			$lp_detail_slider_styles = $listingpro_options['lp_detail_slider_styles'];
-			$IDs = get_post_meta( $post->ID, 'gallery_image_ids', true );
-			if($lp_detail_slider_styles == 'style1'){
-				if (!empty($IDs)) {
-					if($gallery_show=="true"){
-						$imgIDs = explode(',',$IDs);
-						$numImages = count($imgIDs);
-						if($numImages >= 1 ){ ?>
-<!--
-							<div class="pos-relative">
-								<div class="spinner">
-								  <div class="double-bounce1"></div>
-								  <div class="double-bounce2"></div>
-								</div>
-								<div class="single-page-slider-container style1">
 
-								</div>
-							</div>
--->
-							<?php
-						} else{
-							$imgurl = wp_get_attachment_image_src( $imgIDs[0], 'listingpro-listing-gallery');
-							$imgFull = wp_get_attachment_image_src( $imgID, 'full');
-							if(!empty($imgurl[0])){
-								echo '
-								<div class="slide_ban text-center">
-									<a href="'. $imgFull[0] .'" rel="prettyPhoto[gallery1]">
-										<img src="'. $imgurl[0] .'" alt="'.get_the_title().'" />
-									</a>
-								</div>';
-							}
-						}
-					}
-				}
-			} else if($lp_detail_slider_styles == 'style2') {
-				if (!empty($IDs)) {
-					if($gallery_show=="true"){
-						$imgIDs = explode(',',$IDs);
-						$numImages = count($imgIDs);
-						if($numImages >= 1 ){ ?>
-							<div class="pos-relative">
-								<div class="spinner">
-								  <div class="double-bounce1"></div>
-								  <div class="double-bounce2"></div>
-								</div>
-								<div class="single-page-slider-container style2">
-									<div class="row">
-										<div class="">
-											<div class="listing-slide img_<?php echo esc_attr($numImages); ?>" data-images-num="<?php echo esc_attr($numImages); ?>">
-												<?php
-													$slider_height = $listingpro_options['slider_height'];
-													//$imgSize = 'listingpro-gal';
-													require_once (THEME_PATH . "/include/aq_resizer.php");
-													$imgSize = 'listingpro-detail_gallery';
-													foreach($imgIDs as $imgID){
-														$img_url = wp_get_attachment_image_src( $imgID, 'full');
-														$imgSrc = $img_url;
-														$imgFull = wp_get_attachment_image_src( $imgID, 'full');
-														$gstyle= 'style="height:'.$slider_height.'px;object-fit: cover"';
-														if(!empty($img_url[0])){
-															echo '
-															<div class="slide">
-																<a href="'. $imgFull[0] .'" rel="prettyPhoto[gallery1]">
-																	<img '.$gstyle.' src="'. $img_url[0] .'" alt="'.get_the_title().'" />
-																</a>
-															</div>';
-														}
-													}
-												?>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						<?php
-						}
-						else{
-							$imgurl = wp_get_attachment_image_src( $imgIDs[0], 'listingpro-listing-gallery');
-							$imgFull = wp_get_attachment_image_src( $imgID, 'full');
-							if(!empty($imgurl[0])){
-								echo '
-								<div class="slide_ban text-center">
-									<a href="'. $imgFull[0] .'" rel="prettyPhoto[gallery1]">
-										<img src="'. $imgurl[0] .'" alt="'.get_the_title().'" />
-									</a>
-								</div>';
-							}
-						}
-					}
-				}
-			}
-			?>
+
 			<div class="post-meta-info">
 				<div class="container">
 					<div class="top-row-detail">
@@ -237,7 +145,6 @@ if ( have_posts() ) {
 					<div class="row">
 						<div class="col-md-4 col-sm-4 col-xs-12">
 							<div class="post-meta-left-box">
-								<?php if (function_exists('listingpro_breadcrumbs')) listingpro_breadcrumbs(); ?>
 
 
 								<!-- insert feature image -->
