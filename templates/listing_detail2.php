@@ -225,7 +225,7 @@ if ( have_posts() ) {
 									<li class="reviews sbutton">
 										<?php listingpro_sharing(); ?>
 									</li>
-	
+
 								</ul>
 
 							</div>
@@ -296,16 +296,16 @@ if ( have_posts() ) {
 							   	</div>
 								<!-- end of feature image -->
 
-								<h1><?php the_title(); ?> <?php echo $claim; ?></h1>
-								<?php if(!empty($tagline_text)) {
-											if($tagline_show=="true"){?>
-											<p><?php echo $tagline_text; ?></p>
-									<?php } ?>
-								<?php } ?>
+
 							</div>
 						</div>
 						<div class="col-md-4 col-sm-4 col-xs-12">
-							<!-- this is where the favoriting was -->
+							<h1><?php the_title(); ?> <?php echo $claim; ?></h1>
+							<?php if(!empty($tagline_text)) {
+										if($tagline_show=="true"){?>
+										<p><?php echo $tagline_text; ?></p>
+								<?php } ?>
+							<?php } ?>
 						</div>
 					</div>
 				</div>
