@@ -21,7 +21,7 @@ get_header();
 						<div class="row">
 							<div class="col-md-4 col-md-offset-4">
 								<p>	
-									<?php esc_html_e('The page you are looking for might have been removed or is temporarily unavailable.', 'listingpro'); ?>...
+									<?php esc_html_e('Sorry, the page you are looking for might have been removed or is temporarily unavailable.', 'listingpro'); ?>...
 								</p>
 							</div>		
 						</div>		
