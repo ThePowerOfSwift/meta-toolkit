@@ -6,7 +6,7 @@
 					$termID = '';
 					$term_ID = '';
 					global $paged, $listingpro_options;
-					
+
 					$lporderby = 'date';
 					$lporders = 'DESC';
 					if( isset($listingpro_options['lp_archivepage_listingorder']) ){
@@ -15,17 +15,17 @@
 					if( isset($listingpro_options['lp_archivepage_listingorderby']) ){
 						$lporderby = $listingpro_options['lp_archivepage_listingorderby'];
 					}
-					
+
 					if($lporderby=="rand"){
 						$lporders = '';
 					}
-					
+
 					$defSquery = '';
 					$lpDefaultSearchBy = 'title';
 					if( isset($listingpro_options['lp_default_search_by']) ){
 						$lpDefaultSearchBy = $listingpro_options['lp_default_search_by'];
 					}
-					
+
 					$taxTaxDisplay = true;
 					$TxQuery = '';
 					$tagQuery = '';
@@ -44,9 +44,9 @@
 					else{
 						$postsonpage = 9;
 					}
-					
-					
-					
+
+
+
 					if( !empty($_GET['s']) && isset($_GET['s']) && $_GET['s']=="home" ){
 						if( !empty($_GET['lp_s_tag']) && isset($_GET['lp_s_tag'])){
 							$lpsTag = sanitize_text_field($_GET['lp_s_tag']);
@@ -57,7 +57,7 @@
 								'operator'=> 'IN' //Or 'AND' or 'NOT IN'
 							);
 						}
-						
+
 						if( !empty($_GET['lp_s_cat']) && isset($_GET['lp_s_cat'])){
 							$lpsCat = sanitize_text_field($_GET['lp_s_cat']);
 							$termo = get_term_by('id', $lpsCat, 'listing-category');
@@ -69,8 +69,8 @@
 								'operator'=> 'IN' //Or 'AND' or 'NOT IN'
 							);
 						}
-						
-						if( !empty($_GET['lp_s_loc']) && isset($_GET['lp_s_loc'])){							
+
+						if( !empty($_GET['lp_s_loc']) && isset($_GET['lp_s_loc'])){
 							$lpsLoc = sanitize_text_field($_GET['lp_s_loc']);
 							if(is_numeric($lpsLoc)){
 								$lpsLoc = $lpsLoc;
@@ -80,7 +80,7 @@
 								if(!empty($term)){
 									$lpsLoc=$term['term_id'];
 								}
-								
+
 								else{
 									$lpsLoc = '';
 								}
@@ -94,13 +94,13 @@
 						}
 						/* on 3 april by zaheer */
 						if( empty($_GET['lp_s_tag']) && empty($_GET['lp_s_cat']) && !empty($_GET['select']) ){
-							
+
 							if( $lpDefaultSearchBy=="title" ){
 								$sKeyword = sanitize_text_field($_GET['select']);
 								$defSquery = $sKeyword;
 							}
 							else{
-							
+
 								$sKeyword = sanitize_text_field($_GET['select']);
 								$tagQuery = array(
 									'taxonomy' => 'list-tags',
@@ -112,7 +112,7 @@
 								$tagKeyword = sanitize_text_field($_GET['select']);
 								$defSquery = $tagKeyword;
 							}
-							
+
 						}
 						/* end on 3 april by zaheer */
 						$TxQuery = array(
@@ -133,7 +133,7 @@
 							$term_ID = $termID->term_id;
 							$parent = $termID->parent;
 						}
-						
+
 						$TxQuery = array(
 							array(
 								'taxonomy' => $taxName,
@@ -146,7 +146,7 @@
 					}
 
 
-					
+
 					$args=array(
 						'post_type' => $type,
 						'post_status' => 'publish',
@@ -158,7 +158,7 @@
 						'orderby' => $lporderby,
 						'order'   => $lporders,
 					);
-					
+
 					$my_query = null;
 					$my_query = new WP_Query($args);
 					$found = $my_query->found_posts;
@@ -183,13 +183,13 @@
 			</div>
 
 			<div class="mobile-map-space">
-			
+
 					<!-- Popup Open -->
-	
+
 					<div class="md-modal md-effect-3 mobilemap" id="modal-listing">
 						<div class="md-content mapbilemap-content">
-							<div class="map-pop">							
-								<div id='map' class="listingmap"></div>							
+							<div class="map-pop">
+								<div id='map' class="listingmap"></div>
 							</div>
 						<a class="md-close mapbilemap-close"><i class="fa fa-close"></i></a>
 						</div>
@@ -197,11 +197,11 @@
 					<!-- Popup Close -->
 					<div class="md-overlay md-overlayi"></div> <!-- Overlay for Popup -->
 			</div>
-			
+
 			<div class="content-grids-wraps">
 				<div class="row lp-list-page-grid" id="content-grids" >
 					<div class="promoted-listings">
-					
+
 					<?php
 						$array['features'] = '';
 						if( !empty($_GET['s']) && isset($_GET['s']) && $_GET['s']=="home" ){
@@ -213,13 +213,13 @@
 						<div class="md-overlay"></div>
 					</div>
 					<?php
-						
+
 						if( $my_query->have_posts() ) {
-							while ($my_query->have_posts()) : $my_query->the_post();  
-								get_template_part( 'listing-loop' );							
-							endwhile;						
+							while ($my_query->have_posts()) : $my_query->the_post();
+								get_template_part( 'listing-loop' );
+							endwhile;
 						}elseif(empty($ad_campaignsIDS)){
-							?>						
+							?>
 								<div class="text-center margin-top-80 margin-bottom-80">
 									<h2><?php esc_html_e('No Results','listingpro'); ?></h2>
 									<p><?php esc_html_e('Sorry! There are no listings matching your search.','listingpro'); ?></p>
@@ -227,23 +227,23 @@
 									<?php
 									$currentURL = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 									?>
-										<a href="<?php echo esc_url($currentURL); ?>"><?php esc_html_e('Reset Filter','listingpro'); ?></a>
+										<a href="<?php echo siteURL(); ?>"><?php esc_html_e('Start over','listingpro'); ?></a>
 									</p>
-								</div>									
+								</div>
 							<?php
-						}	
-						
+						}
+
 					?>
 					<div class="md-overlay"></div>
 				</div>
 			</div>
-			<?php 
+			<?php
 				echo '<div id="lp-pages-in-cats">';
 				echo listingpro_load_more_filter($my_query, '1', $defSquery);
 				echo '</div>';
 			?>
 			<div class="lp-pagination pagination lp-filter-pagination-ajx"></div>
-			
+
 		</div>
 	</section>
 	<!--==================================Section Close=================================-->

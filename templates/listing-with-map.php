@@ -6,7 +6,7 @@
 					$termID = '';
 					$term_ID = '';
 					global $paged, $listingpro_options;
-					
+
 					$lporderby = 'date';
 					$lporders = 'DESC';
 					if( isset($listingpro_options['lp_archivepage_listingorder']) ){
@@ -15,17 +15,17 @@
 					if( isset($listingpro_options['lp_archivepage_listingorderby']) ){
 						$lporderby = $listingpro_options['lp_archivepage_listingorderby'];
 					}
-					
+
 					$defSquery = '';
 					$lpDefaultSearchBy = 'title';
 					if( isset($listingpro_options['lp_default_search_by']) ){
 						$lpDefaultSearchBy = $listingpro_options['lp_default_search_by'];
 					}
-					
+
 					if($lporderby=="rand"){
 						$lporders = '';
 					}
-					
+
 					$taxTaxDisplay = true;
 					$TxQuery = '';
 					$tagQuery = '';
@@ -43,8 +43,8 @@
 					else{
 						$postsonpage = 10;
 					}
-					
-					
+
+
 					if( !empty($_GET['s']) && isset($_GET['s']) && $_GET['s']=="home" ){
 						if( !empty($_GET['lp_s_tag']) && isset($_GET['lp_s_tag'])){
 							$lpsTag = sanitize_text_field($_GET['lp_s_tag']);
@@ -55,7 +55,7 @@
 								'operator'=> 'IN' //Or 'AND' or 'NOT IN'
 							);
 						}
-						
+
 						if( !empty($_GET['lp_s_cat']) && isset($_GET['lp_s_cat'])){
 							$lpsCat = sanitize_text_field($_GET['lp_s_cat']);
 							$catQuery = array(
@@ -66,8 +66,8 @@
 							);
 							$taxName = 'listing-category';
 						}
-						
-						if( !empty($_GET['lp_s_loc']) && isset($_GET['lp_s_loc'])){							
+
+						if( !empty($_GET['lp_s_loc']) && isset($_GET['lp_s_loc'])){
 							$lpsLoc = sanitize_text_field($_GET['lp_s_loc']);
 							if(is_numeric($lpsLoc)){
 								$lpsLoc = $lpsLoc;
@@ -90,14 +90,14 @@
 						}
 						/* on 3 april by zaheer */
 						if( empty($_GET['lp_s_tag']) && empty($_GET['lp_s_cat']) && !empty($_GET['select']) ){
-							
+
 							if( $lpDefaultSearchBy=="title" ){
 								$sKeyword = sanitize_text_field($_GET['select']);
 								$defSquery = $sKeyword;
 							}
 							else{
 								$sKeyword = sanitize_text_field($_GET['select']);
-								
+
 								$tagQuery = array(
 									'taxonomy' => 'list-tags',
 									'field' => 'name',
@@ -108,8 +108,8 @@
 								$tagKeyword = sanitize_text_field($_GET['select']);
 								$defSquery = $tagKeyword;
 							}
-							
-							
+
+
 						}
 						if( empty($_GET['lp_s_loc']) && empty($_GET['lp_s_tag']) && empty($_GET['lp_s_cat']) && empty($_GET['select']) ){
 							//$postsonpage = 25;
@@ -121,7 +121,7 @@
 							$catQuery,
 							$locQuery,
 						);
-					$ad_campaignsIDS = listingpro_get_campaigns_listing( 'lp_top_in_search_page_ads', TRUE,$taxQuery,$TxQuery,$priceQuery,$sKeyword, null, null);	
+					$ad_campaignsIDS = listingpro_get_campaigns_listing( 'lp_top_in_search_page_ads', TRUE,$taxQuery,$TxQuery,$priceQuery,$sKeyword, null, null);
 					}
 					else{
 						$queried_object = get_queried_object();
@@ -132,7 +132,7 @@
 							$termName = $termID->name;
 							$term_ID = $termID->term_id;
 						}
-						
+
 						$TxQuery = array(
 							array(
 								'taxonomy' => $taxName,
@@ -143,11 +143,11 @@
 						);
 					$ad_campaignsIDS = listingpro_get_campaigns_listing( 'lp_top_in_search_page_ads', TRUE, $TxQuery,$searchQuery,$priceQuery,$sKeyword, null, null );
 					}
-					
-					
 
-					
-					
+
+
+
+
 					$args=array(
 						'post_type' => $type,
 						'post_status' => 'publish',
@@ -159,7 +159,7 @@
 						'orderby' => $lporderby,
 						'order'   => $lporders,
 					);
-					
+
 					$my_query = null;
 					$my_query = new WP_Query($args);
 					$found = $my_query->found_posts;
@@ -187,15 +187,15 @@
 			</div>
 			<div class="all-list-map"></div>
 			<div class=" pull-left post-with-map-container-right">
-				<div class="post-with-map-container pull-left">				
+				<div class="post-with-map-container pull-left">
 					<div class="margin-bottom-20 margin-top-30">
 						<?php get_template_part( 'templates/search/filter'); ?>
 					</div>
 					<div class="content-grids-wraps">
-						<div class="clearfix lp-list-page-grid" id="content-grids" >						
+						<div class="clearfix lp-list-page-grid" id="content-grids" >
 							<?php
 								$array['features'] = '';
-								?> 
+								?>
 								<div class="promoted-listings">
 									<?php
 									if( !empty($_GET['s']) && isset($_GET['s']) && $_GET['s']=="home" ){
@@ -203,17 +203,17 @@
 									}else{
 										echo listingpro_get_campaigns_listing( 'lp_top_in_search_page_ads', false, $TxQuery,$searchQuery,$priceQuery,$sKeyword, null, null);
 									}
-									?> 
+									?>
 								<div class="md-overlay"></div>
 								</div>
 								<?php
 								if( $my_query->have_posts() ) {
-									while ($my_query->have_posts()) : $my_query->the_post();  
-										get_template_part( 'listing-loop' );							
+									while ($my_query->have_posts()) : $my_query->the_post();
+										get_template_part( 'listing-loop' );
 									endwhile;
 									wp_reset_query();
 								}elseif(empty($ad_campaignsIDS)){
-									?>						
+									?>
 										<div class="text-center margin-top-80 margin-bottom-80">
 											<h2><?php esc_html_e('No Results','listingpro'); ?></h2>
 											<p><?php esc_html_e('Sorry! There are no listings matching your search.','listingpro'); ?></p>
@@ -221,22 +221,22 @@
 											<?php
 											$currentURL = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 											?>
-												<a href="<?php echo esc_url($currentURL); ?>"><?php esc_html_e('Reset Filter','listingpro'); ?></a>
+												<a href="<?php echo siteURL(); ?>"><?php esc_html_e('Start over','listingpro'); ?></a>
 											</p>
-										</div>									
+										</div>
 									<?php
-								}	
-								
+								}
+
 							?>
 						<div class="md-overlay"></div>
 						</div>
 					</div>
-				
-				<?php 
+
+				<?php
 						echo '<div id="lp-pages-in-cats">';
 						echo listingpro_load_more_filter($my_query, '1', $defSquery);
 						echo '</div>';
-						
+
 				 ?>
 				<div class="lp-pagination pagination lp-filter-pagination-ajx"></div>
 				</div>
