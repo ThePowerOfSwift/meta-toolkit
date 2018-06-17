@@ -215,7 +215,7 @@ if ( have_posts() ) {
 							<?php } ?>
 
 							<?php if(!empty($website)) {
-										if($website_show=="true"){?>
+										if($website=="true"){?>
 										<p><?php echo $website; ?></p>
 								<?php } ?>
 							<?php } ?>
