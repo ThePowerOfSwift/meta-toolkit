@@ -2,7 +2,7 @@
 if(!function_exists('listingpro_get_reviews_form')){
 	function listingpro_get_reviews_form($postid){
 		if (class_exists('ListingReviews')) {
-			
+
 			global $listingpro_options;
 			$lp_Reviews_OPT = $listingpro_options['lp_review_submit_options'];
 			$gSiteKey = '';
@@ -16,13 +16,13 @@ if(!function_exists('listingpro_get_reviews_form')){
 					$enableUsernameField = true;
 				}
 			}
-			
+
 			if( is_user_logged_in() ){
-				
+
 				?>
-				
+
 					<div class="review-form" id="review-section">
-						<h3 id="reply-title" class="comment-reply-title"><i class="fa fa-star-o"></i> <?php esc_html_e('Rate us and Write a Review','listingpro'); ?> <i class="fa fa-caret-down"></i></h3>
+						<h3 id="reply-title" class="comment-reply-title"><i class="fa fa-star-o"></i> <?php esc_html_e('Add your feedback','listingpro'); ?> <i class="fa fa-caret-down"></i></h3>
 						<form id = "rewies_form" name = "rewies_form" action = "" method = "post" enctype="multipart/form-data">
 							<div class = "col-md-6 padding-left-0">
 								<div class="form-group margin-bottom-40">
@@ -39,7 +39,7 @@ if(!function_exists('listingpro_get_reviews_form')){
 									</div>
 								</div>
 							</div>
-							
+
 							<div class = "col-md-6 pull-right padding-right-0">
 								<div class="form-group submit-images">
 									<label for = "post_gallery submit-images"><?php esc_html_e('Select Images','listingpro'); ?></label>
@@ -55,13 +55,13 @@ if(!function_exists('listingpro_get_reviews_form')){
 							<div class="form-group">
 								<label for = "post_description"><?php esc_html_e('Review','listingpro'); ?></label>
 								<textarea placeholder="<?php esc_html_e('Tip: A great review covers food, service, and ambiance. Got recommendations for your favorite dishes and drinks, or something everyone should try here? Include that too!','listingpro'); ?>" id = "post_description" class="form-control" rows="8" name = "post_description" ></textarea>
-								<p><?php esc_html_e('Your review is recommended to be at least 140 characters long :)','listingpro'); ?></p>
+								<p><?php esc_html_e('Your review is recommended to be at least 140 characters long','listingpro'); ?></p>
 							</div>
 							<div class="form-group">
 								<?php
 									if($enableCaptcha==true){
-										if ( class_exists( 'cridio_Recaptcha' ) ){ 
-											if ( cridio_Recaptcha_Logic::is_recaptcha_enabled() ) { 
+										if ( class_exists( 'cridio_Recaptcha' ) ){
+											if ( cridio_Recaptcha_Logic::is_recaptcha_enabled() ) {
 											echo  '<div style="transform:scale(0.88);-webkit-transform:scale(0.88);transform-origin:0 0;-webkit-transform-origin:0 0;" id="recaptcha-'.get_the_ID().'" class="g-recaptcha" data-sitekey="'.$gSiteKey.'"></div>';
 											}
 										}
@@ -82,7 +82,7 @@ if(!function_exists('listingpro_get_reviews_form')){
 											</div>
 									</div>
 									<p class="form-submit post-reletive">
-										<input name="submit_review" type="submit" id="submit" class="lp-review-btn btn-second-hover" value="<?php esc_html_e('Submit Review','listingpro'); ?>" disabled> 
+										<input name="submit_review" type="submit" id="submit" class="lp-review-btn btn-second-hover" value="<?php esc_html_e('Submit Review','listingpro'); ?>" disabled>
 										<input type="hidden" name="comment_post_ID" value="<?php echo $postid; ?>" id="comment_post_ID">
 										<input type="hidden" name="errormessage" value="<?php esc_html_e('Please fill Email, Title, Description and Rating', 'listingpro'); ?>">
 										<span class="review_status"></span>
@@ -92,7 +92,7 @@ if(!function_exists('listingpro_get_reviews_form')){
 								}else{
 							?>
 								<p class="form-submit post-reletive">
-									<input name="submit_review" type="submit" id="submit" class="lp-review-btn btn-second-hover" value="<?php esc_html_e('Submit Review','listingpro'); ?>"> 
+									<input name="submit_review" type="submit" id="submit" class="lp-review-btn btn-second-hover" value="<?php esc_html_e('Submit Review','listingpro'); ?>">
 									<input type="hidden" name="comment_post_ID" value="<?php echo $postid; ?>" id="comment_post_ID">
 									<input type="hidden" name="errormessage" value="<?php esc_html_e('Please fill Email, Title, Description and Rating', 'listingpro'); ?>">
 									<span class="review_status"></span>
@@ -101,15 +101,15 @@ if(!function_exists('listingpro_get_reviews_form')){
 							<?php
 								}
 							?>
-							
-							
+
+
 						</form>
 					</div>
 				<?php
 			}
 			else  { ?>
 				<div class="review-form">
-					<h3 id="reply-title" class="comment-reply-title"><i class="fa fa-star-o"></i><?php esc_html_e(' Rate us and Write a Review ','listingpro'); ?><i class="fa fa-caret-down"></i></h3>
+					<h3 id="reply-title" class="comment-reply-title"><i class="fa fa-star-o"></i><?php esc_html_e(' Add your feedback ','listingpro'); ?><i class="fa fa-caret-down"></i></h3>
 					<?php
 						if($lp_Reviews_OPT=="instant_sign_in"){
 					?>
@@ -119,9 +119,9 @@ if(!function_exists('listingpro_get_reviews_form')){
 						else{
 					?>
 						<form id = "rewies_formm" name = "rewies_form" action = "#" method = "post" enctype="multipart/form-data">
-						
+
 					<?php } ?>
-					
+
 						<div class = "col-md-6 padding-left-0">
 							<div class="form-group margin-bottom-40">
 								<p class="padding-bottom-15"><?php esc_html_e('Your Rating for this listing','listingpro'); ?></p>
@@ -145,15 +145,15 @@ if(!function_exists('listingpro_get_reviews_form')){
 							</div>
 						</div>
 						<div class="clearfix"></div>
-						
+
 						<?php if($enableUsernameField==true){ ?>
 							<div class="form-group">
 								<label for = "u_mail"><?php esc_html_e('User Name','listingpro'); ?></label>
 								<input type = "text" placeholder="<?php esc_html_e('john','listingpro'); ?>" id = "lp_custom_username" class="form-control" name = "lp_custom_username" />
 							</div>
-						
+
 						<?php } ?>
-						
+
 						<?php
 							if($lp_Reviews_OPT=="instant_sign_in"){
 						?>
@@ -162,7 +162,7 @@ if(!function_exists('listingpro_get_reviews_form')){
 								<input type = "email" placeholder="<?php esc_html_e('you@website.com','listingpro'); ?>" id = "u_mail" class="form-control" name = "u_mail" />
 							</div>
 							<?php } ?>
-						
+
 						<div class="form-group">
 							<label for = "post_title"><?php esc_html_e('Title','listingpro'); ?></label>
 							<input type = "text" placeholder="<?php esc_html_e('Example: It was an awesome experience to be there','listingpro'); ?>" id = "post_title" class="form-control" name = "post_title" />
@@ -176,8 +176,8 @@ if(!function_exists('listingpro_get_reviews_form')){
 								<?php
 									if($lp_Reviews_OPT=="instant_sign_in"){
 										if($enableCaptcha==true){
-											if ( class_exists( 'cridio_Recaptcha' ) ){ 
-												if ( cridio_Recaptcha_Logic::is_recaptcha_enabled() ) { 
+											if ( class_exists( 'cridio_Recaptcha' ) ){
+												if ( cridio_Recaptcha_Logic::is_recaptcha_enabled() ) {
 												echo  '<div style="transform:scale(0.88);-webkit-transform:scale(0.88);transform-origin:0 0;-webkit-transform-origin:0 0;" id="recaptcha-'.get_the_ID().'" class="g-recaptcha" data-sitekey="'.$gSiteKey.'"></div>';
 												}
 											}
@@ -186,7 +186,7 @@ if(!function_exists('listingpro_get_reviews_form')){
 								?>
 						</div>
 						<?php
-							
+
 							if(!empty($privacy_policy) && $privacy_review=="yes"){
 						?>
 								<div class="form-group lp_privacy_policy_Wrap">
@@ -199,8 +199,8 @@ if(!function_exists('listingpro_get_reviews_form')){
 													</div>
 												</div>
 								</div>
-								
-								
+
+
 								<p class="form-submit">
 									<?php
 										if($lp_Reviews_OPT=="sign_in"){
@@ -227,17 +227,17 @@ if(!function_exists('listingpro_get_reviews_form')){
 									?>
 										<input name="submit_review" type="submit" id="submit" class="lp-review-btn btn-second-hover" value="<?php echo esc_html__('Signup & Submit Review ', 'listingpro');?>">
 									<?php } ?>
-									
+
 									<span class="review_status"></span>
 									<img class="loadinerSearch" width="100px" src="<?php echo get_template_directory_uri().'/assets/images/ajax-load.gif' ?>">
 								</p>
 					<?php
 							}
 					?>
-					
+
 						<input type="hidden" name="comment_post_ID" value="<?php echo $postid; ?>" id="comment_post_ID">
-						
-					
+
+
 					</form>
 				</div>
 				<?php
