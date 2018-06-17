@@ -267,12 +267,6 @@ if ( have_posts() ) {
 								foreach ($pagelayoutOption as $key=>$value) {
 									switch($key) {
 
-										case 'lp_video_section': get_template_part( 'templates/single-list/listing-details-style1/content/video' );
-										break;
-
-										case 'lp_content_section': get_template_part( 'templates/single-list/listing-details-style1/content/content' );
-										break;
-
 										case 'lp_features_section': get_template_part( 'templates/single-list/listing-details-style1/content/features' );
 										break;
 
