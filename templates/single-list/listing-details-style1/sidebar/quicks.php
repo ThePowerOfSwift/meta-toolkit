@@ -82,9 +82,9 @@
 		<div class="price-area">
 
 			<?php
-				if($price_show=="true"){
-					echo listingpro_price_dynesty($post->ID);
-				}
+				// if($price_show=="true"){
+				// 	echo listingpro_price_dynesty($post->ID);
+				// }
 			 ?>
 			<?php get_template_part('templates/single-list/claimed' ); ?>
 			<?php
