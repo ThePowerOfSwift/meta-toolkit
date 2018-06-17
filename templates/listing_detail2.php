@@ -3,7 +3,7 @@
 global $listingpro_options;
 if ( have_posts() ) {
 	while ( have_posts() ) {
-		the_post(); 
+		the_post();
 		setPostViews(get_the_ID());
 		$claimed_section = listing_get_metabox('claimed_section');
 		$tagline_text = listing_get_metabox('tagline_text');
@@ -15,7 +15,7 @@ if ( have_posts() ) {
 		}else{
 			$plan_id = 'none';
 		}
-		
+
 		$contact_show = get_post_meta( $plan_id, 'contact_show', true );
 		$map_show = get_post_meta( $plan_id, 'map_show', true );
 		$video_show = get_post_meta( $plan_id, 'video_show', true );
@@ -28,7 +28,7 @@ if ( have_posts() ) {
 		$price_show = get_post_meta( $plan_id, 'listingproc_price', true );
 		$tags_show = get_post_meta( $plan_id, 'listingproc_tag_key', true );
 		$hours_show = get_post_meta( $plan_id, 'listingproc_bhours', true );
-		
+
 		if($plan_id=="none"){
 			$contact_show = 'true';
 			$map_show = 'true';
@@ -53,7 +53,7 @@ if ( have_posts() ) {
 
 		}
 		global $post;
-		
+
 		$resurva_url = get_post_meta($post->ID, 'resurva_url', true);
 		$menuOption = false;
 		$menuTitle = '';
@@ -64,16 +64,16 @@ if ( have_posts() ) {
 			$menuImg = $menuMeta['menu-img'];
 			$menuOption = true;
 		}
-		
+
 		$timekit = false;
 		$timekit_booking = get_post_meta($post->ID, 'timekit_bookings', true);
-		
+
 		if(!empty($timekit_booking)){
 			$timekit = true;
 		}
-		
-		
-		
+
+
+
 		/* get user meta */
 		$user_id=$post->post_author;
 		$user_facebook = '';
@@ -91,27 +91,27 @@ if ( have_posts() ) {
 		$user_instagram = get_the_author_meta('instagram', $user_id);
 		$user_twitter = get_the_author_meta('twitter', $user_id);
 		$user_pinterest = get_the_author_meta('pinterest', $user_id);
-		
+
 		$gAddress = listing_get_metabox('gAddress');
 		lp_get_lat_long_from_address($gAddress, get_the_ID());
 		/* get user meta */
 		$lp_detail_page_additional_detail_position = $listingpro_options['lp_detail_page_additional_styles'];
-		
+
 		$showReport = true;
 		if( isset($listingpro_options['lp_detail_page_report_button']) ){
 			if( $listingpro_options['lp_detail_page_report_button']=='off' ){
 				$showReport = false;
 			}
 		}
-		
+
 		?>
 		<!--==================================Section Open=================================-->
 		<section class="aliceblue listing-second-view">
 			<!--=======Galerry=====-->
-			<?php 
+			<?php
 			$lp_detail_slider_styles = $listingpro_options['lp_detail_slider_styles'];
 			$IDs = get_post_meta( $post->ID, 'gallery_image_ids', true );
-			if($lp_detail_slider_styles == 'style1'){				
+			if($lp_detail_slider_styles == 'style1'){
 				if (!empty($IDs)) {
 					if($gallery_show=="true"){
 						$imgIDs = explode(',',$IDs);
@@ -124,7 +124,7 @@ if ( have_posts() ) {
 								  <div class="double-bounce2"></div>
 								</div>
 								<div class="single-page-slider-container style1">
-									
+
 								</div>
 							</div>
 -->
@@ -198,22 +198,67 @@ if ( have_posts() ) {
 							}
 						}
 					}
-				}					
+				}
 			}
 			?>
 			<div class="post-meta-info">
 				<div class="container">
 					<div class="row">
 						<div class="col-md-8 col-sm-8 col-xs-12">
+							<?php if (function_exists('listingpro_breadcrumbs')) listingpro_breadcrumbs(); ?>
+						</div>
+						<div class="col-md-4 col-sm-4 col-xs-12">
+							<div class="post-meta-right-box text-right clearfix margin-top-20">
+								<ul class="post-stat">
+									<?php
+                                        $favrt  =   listingpro_is_favourite_new(get_the_ID());
+                                     ?>
+									<li id="fav-container">
+										<a class="email-address <?php if($favrt == 'yes'){echo 'remove-fav';}else{echo 'add-to-fav';} ?>" data-post-type="detail" href="" data-post-id="<?php echo get_the_ID(); ?>" data-success-text="<?php echo esc_html__('Saved', 'listingpro') ?>">
+											<i class="fa <?php echo listingpro_is_favourite(get_the_ID(),$onlyicon=true); ?>"></i>
+											<span class="email-icon">
+												<?php echo listingpro_is_favourite(get_the_ID(),$onlyicon=false); ?>
+											</span>
+
+										</a>
+									</li>
+									<li class="reviews sbutton">
+										<?php listingpro_sharing(); ?>
+									</li>
+									<li>
+										<span class="rating-section">
+											<?php
+												$NumberRating = listingpro_ratings_numbers($post->ID);
+												if($NumberRating != 0){
+													echo lp_cal_listing_rate(get_the_ID());
+											?>
+													<span>
+														<small><?php echo $NumberRating; ?></small>
+														<br>
+														<?php echo esc_html__('Ratings', 'listingpro'); ?>
+													</span>
+											<?php
+												}else{
+													echo lp_cal_listing_rate(get_the_ID());
+												}
+											?>
+										</span>
+									</li>
+								</ul>
+								
+							</div>
+						</div>
+
+
+					</div>
+					<div class="row">
+						<div class="col-md-8 col-sm-8 col-xs-12">
 							<div class="post-meta-left-box">
 								<?php if (function_exists('listingpro_breadcrumbs')) listingpro_breadcrumbs(); ?>
 
 
-
 								<!-- insert feature image -->
-								
-								
-								<div class="lp-grid-box-thumb">
+								<div class="item-detail-image">
 									<div class="show-img">
 										<?php
 											if ( has_post_thumbnail()) {
@@ -227,7 +272,7 @@ if ( have_posts() ) {
 														<a href="'.get_the_permalink().'" >
 															<img src="'.esc_html__('https://placeholdit.imgix.net/~text?txtsize=33&w=372&h=400', 'listingpro').'" alt="">
 														</a>';
-													}	
+													}
 											}elseif(!empty($deafaultFeatImg)){
 												echo "<a href='".get_the_permalink()."' >
 													<img src='" . $deafaultFeatImg . "' />
@@ -253,7 +298,7 @@ if ( have_posts() ) {
 														<a href="'.get_the_permalink().'" >
 															<img src="'.esc_html__('https://placeholdit.imgix.net/~text?txtsize=33&w=372&h=240', 'listingpro').'" alt="">
 														</a>';
-													}	
+													}
 											}elseif(!empty($deafaultFeatImg)){
 												echo "<a href='".get_the_permalink()."' >
 													<img src='" . $deafaultFeatImg . "' />
@@ -267,7 +312,6 @@ if ( have_posts() ) {
 										?>
 									</div>
 							   	</div>
-								
 								<!-- end of feature image -->
 
 								<h1><?php the_title(); ?> <?php echo $claim; ?></h1>
@@ -279,74 +323,7 @@ if ( have_posts() ) {
 							</div>
 						</div>
 						<div class="col-md-4 col-sm-4 col-xs-12">
-							<div class="post-meta-right-box text-right clearfix margin-top-20">
-								<ul class="post-stat">
-									<?php
-                                        $favrt  =   listingpro_is_favourite_new(get_the_ID());
-                                     ?>
-									<li id="fav-container">
-										<a class="email-address <?php if($favrt == 'yes'){echo 'remove-fav';}else{echo 'add-to-fav';} ?>" data-post-type="detail" href="" data-post-id="<?php echo get_the_ID(); ?>" data-success-text="<?php echo esc_html__('Saved', 'listingpro') ?>">
-											<i class="fa <?php echo listingpro_is_favourite(get_the_ID(),$onlyicon=true); ?>"></i>
-											<span class="email-icon">
-												<?php echo listingpro_is_favourite(get_the_ID(),$onlyicon=false); ?>
-											</span>
-											 										
-										</a>
-									</li>
-									<li class="reviews sbutton">
-										<?php listingpro_sharing(); ?>
-									</li>
-								</ul>
-								<div class="padding-top-30">
-								<span class="rating-section">
-									<?php
-										$NumberRating = listingpro_ratings_numbers($post->ID);
-										if($NumberRating != 0){
-											echo lp_cal_listing_rate(get_the_ID());											
-									?>
-											<span>
-												<small><?php echo $NumberRating; ?></small>
-												<br> 
-												<?php echo esc_html__('Ratings', 'listingpro'); ?>
-											</span>
-									<?php		
-										}else{
-											echo lp_cal_listing_rate(get_the_ID());
-										}
-									?>
-								</span>
-									<?php if(!empty($resurva_url)){ ?>
-											<a href="" class="secondary-btn make-reservation">
-												<i class="fa fa-calendar-check-o"></i>
-												<?php echo esc_html__('Book Now', 'listingpro'); ?>
-											</a>
-											<div class="ifram-reservation">
-												<div class="inner-reservations">
-													<a href="#" class="close-btn"><i class="fa fa-times"></i></a>
-													<iframe src="<?php echo esc_url($resurva_url); ?>" name="resurva-frame" frameborder="0"></iframe>
-												</div>
-											</div>
-									<?php }else{
-												if (class_exists('ListingReviews')) {
-													$allowedReviews = $listingpro_options['lp_review_switch'];
-													if(!empty($allowedReviews) && $allowedReviews=="1"){
-														if(get_post_status($post->ID)=="publish"){
-														
-											?>
-													<a href="#reply-title" class="secondary-btn" id="clicktoreview">
-														<i class="fa fa-star"></i>
-														<?php echo esc_html__('Submit Review', 'listingpro'); ?>
-													</a>
-											<?php
-													}
-													}
-												}
-											}
-									?>
-									
-									
-								</div>
-							</div>
+							<!-- this is where the favoriting was -->
 						</div>
 					</div>
 				</div>
@@ -356,13 +333,13 @@ if ( have_posts() ) {
 					<?php if( isset($listingpro_options['lp-gads-editor']) ){
 						$listingGAdsense = $listingpro_options['lp-gads-editor'];
 						if( !empty($listingGAdsense) ){ ?>
-							
+
 							<div class="row">
 								<div class="col-md-12 col-sm-12 col-xs-12">
 									<?php echo $listingGAdsense; ?>
 								</div>
 							</div>
-							
+
 						<?php }
 					} ?>
 					<div class="row">
@@ -372,32 +349,32 @@ if ( have_posts() ) {
 							if ($pagelayoutOption):
 								foreach ($pagelayoutOption as $key=>$value) {
 									switch($key) {
-										 
+
 										case 'lp_video_section': get_template_part( 'templates/single-list/listing-details-style1/content/video' );
 										break;
-								 
+
 										case 'lp_content_section': get_template_part( 'templates/single-list/listing-details-style1/content/content' );
 										break;
-								 
-										case 'lp_features_section': get_template_part( 'templates/single-list/listing-details-style1/content/features' );    
+
+										case 'lp_features_section': get_template_part( 'templates/single-list/listing-details-style1/content/features' );
 										break;
 
 										case 'lp_additional_section': get_template_part( 'templates/single-list/listing-details-style1/content/additional' );
-										break;										
-										
-										case 'lp_faqs_section': get_template_part( 'templates/single-list/listing-details-style1/content/faqs' );    
-										break; 
-										
-										case 'lp_reviews_section': get_template_part( 'templates/single-list/listing-details-style1/content/reviews' );    
-										break; 
-										
-										case 'lp_reviewform_section': get_template_part( 'templates/single-list/listing-details-style1/content/reviewform' );    
 										break;
-											 
+
+										case 'lp_faqs_section': get_template_part( 'templates/single-list/listing-details-style1/content/faqs' );
+										break;
+
+										case 'lp_reviews_section': get_template_part( 'templates/single-list/listing-details-style1/content/reviews' );
+										break;
+
+										case 'lp_reviewform_section': get_template_part( 'templates/single-list/listing-details-style1/content/reviewform' );
+										break;
+
 									}
-								 
+
 								}
-									 
+
 							endif;
 						?>
 						</div>
@@ -406,31 +383,31 @@ if ( have_posts() ) {
 								$pagesidebrOption = $listingpro_options['lp-detail-page-layout-rsidebar']['sidebar'];
 								if ($pagesidebrOption):
 									foreach ($pagesidebrOption as $key=>$value) {
-										
+
 										switch($key) {
-											
+
 											case 'lp_timing_section': get_template_part( 'templates/single-list/listing-details-style1/sidebar/timings' );
 											break;
-											
+
 											case 'lp_mapsocial_section': get_template_part( 'templates/single-list/listing-details-style1/sidebar/map-contacts' );
 											break;
-											
+
 											case 'lp_leadform_section': get_template_part( 'templates/single-list/listing-details-style1/sidebar/leadform' );
 											break;
-											
+
 											case 'lp_quicks_section': get_template_part( 'templates/single-list/listing-details-style1/sidebar/quicks' );
 											break;
-											
+
 											case 'lp_additional_section': get_template_part( 'templates/single-list/listing-details-style1/sidebar/additional' );
 											break;
-											
+
 											case 'lp_sidebarelemnts_section': get_template_part( 'templates/single-list/listing-details-style1/sidebar/def-sidebar' );
 											break;
-											
-											
+
+
 										}
 									}
-								endif;	
+								endif;
 							?>
 						</div>
 					</div>
@@ -438,7 +415,7 @@ if ( have_posts() ) {
 			</div>
 		</section>
 		<!--==================================Section Close=================================-->
-		<?php 
+		<?php
 		global $post;
 		echo listingpro_post_confirmation($post);
 	} // end while
