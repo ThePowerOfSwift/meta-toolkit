@@ -204,6 +204,7 @@ if ( have_posts() ) {
 			<div class="post-meta-info">
 				<div class="container">
 					<div class="top-row-detail">
+						<p>test something here</p>
 						<div class="col-md-8 col-sm-8 col-xs-12">
 							<?php if (function_exists('listingpro_breadcrumbs')) listingpro_breadcrumbs(); ?>
 						</div>
