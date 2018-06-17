@@ -367,3 +367,10 @@ additional details
 .post-meta-info .top-row-detail {
   display: block;
 }
+
+#better-breadcrumbs ul,
+.better-bread ul
+#better-breadcrumbs ul.breadcrumbs {
+  padding-top: 0;
+  top: 0;
+}
