@@ -213,6 +213,25 @@ if ( have_posts() ) {
 										<p><?php echo $tagline_text; ?></p>
 								<?php } ?>
 							<?php } ?>
+
+							<?php
+								$pagesidebrOption = $listingpro_options['lp-detail-page-layout-rsidebar']['sidebar'];
+								if ($pagesidebrOption):
+									foreach ($pagesidebrOption as $key=>$value) {
+
+										switch($key) {
+
+											case 'lp_additional_section': get_template_part( 'templates/single-list/listing-details-style1/sidebar/additional' );
+											break;
+
+											case 'lp_sidebarelemnts_section': get_template_part( 'templates/single-list/listing-details-style1/sidebar/def-sidebar' );
+											break;
+
+
+										}
+									}
+								endif;
+							?>
 						</div>
 					</div>
 				</div>
@@ -287,11 +306,7 @@ if ( have_posts() ) {
 											case 'lp_quicks_section': get_template_part( 'templates/single-list/listing-details-style1/sidebar/quicks' );
 											break;
 
-											case 'lp_additional_section': get_template_part( 'templates/single-list/listing-details-style1/sidebar/additional' );
-											break;
 
-											case 'lp_sidebarelemnts_section': get_template_part( 'templates/single-list/listing-details-style1/sidebar/def-sidebar' );
-											break;
 
 
 										}
