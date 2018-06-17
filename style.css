@@ -374,3 +374,17 @@ additional details
   padding-top: 0;
   top: 0;
 }
+
+span.tag-groups-tag a {
+  background:#eee;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-decoration: none;
+  padding: 3px;
+  margin: 3px;
+}
+
+span.tag-groups-tag a:hover {
+background:#a8281a;
+color:#FFF;
+}
