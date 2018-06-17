@@ -207,6 +207,69 @@ if ( have_posts() ) {
 						<div class="col-md-8 col-sm-8 col-xs-12">
 							<div class="post-meta-left-box">
 								<?php if (function_exists('listingpro_breadcrumbs')) listingpro_breadcrumbs(); ?>
+
+
+
+								<!-- insert feature image -->
+								
+								
+								<div class="lp-grid-box-thumb">
+									<div class="show-img">
+										<?php
+											if ( has_post_thumbnail()) {
+												$image = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID()), 'listingpro-blog-grid2' );
+													if(!empty($image[0])){
+														echo "<a href='".get_the_permalink()."' >
+																<img src='" . $image[0] . "' />
+															</a>";
+													}else {
+														echo '
+														<a href="'.get_the_permalink().'" >
+															<img src="'.esc_html__('https://placeholdit.imgix.net/~text?txtsize=33&w=372&h=400', 'listingpro').'" alt="">
+														</a>';
+													}	
+											}elseif(!empty($deafaultFeatImg)){
+												echo "<a href='".get_the_permalink()."' >
+													<img src='" . $deafaultFeatImg . "' />
+												</a>";
+											}else {
+												echo '
+												<a href="'.get_the_permalink().'" >
+													<img src="'.esc_html__('https://placeholdit.imgix.net/~text?txtsize=33&w=372&h=400', 'listingpro').'" alt="">
+												</a>';
+											}
+										?>
+									</div>
+									<div class="hide-img listingpro-list-thumb">
+										<?php
+											if ( has_post_thumbnail()) {
+												$image = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID()), 'listingpro-blog-grid' );
+													if(!empty($image[0])){
+														echo "<a href='".get_the_permalink()."' >
+																<img src='" . $image[0] . "' />
+															</a>";
+													}else {
+														echo '
+														<a href="'.get_the_permalink().'" >
+															<img src="'.esc_html__('https://placeholdit.imgix.net/~text?txtsize=33&w=372&h=240', 'listingpro').'" alt="">
+														</a>';
+													}	
+											}elseif(!empty($deafaultFeatImg)){
+												echo "<a href='".get_the_permalink()."' >
+													<img src='" . $deafaultFeatImg . "' />
+												</a>";
+											}else {
+												echo '
+												<a href="'.get_the_permalink().'" >
+													<img src="'.esc_html__('https://placeholdit.imgix.net/~text?txtsize=33&w=372&h=240', 'listingpro').'" alt="">
+												</a>';
+											}
+										?>
+									</div>
+							   	</div>
+								
+								<!-- end of feature image -->
+
 								<h1><?php the_title(); ?> <?php echo $claim; ?></h1>
 								<?php if(!empty($tagline_text)) {
 											if($tagline_show=="true"){?>
