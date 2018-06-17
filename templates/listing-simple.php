@@ -227,7 +227,7 @@
 									<?php
 									$currentURL = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 									?>
-										<a href="<?php echo siteURL(); ?>"><?php esc_html_e('Start over','listingpro'); ?></a>
+										<a href="/"><?php esc_html_e('Start over','listingpro'); ?></a>
 									</p>
 								</div>
 							<?php
