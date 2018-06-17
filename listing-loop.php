@@ -1,11 +1,11 @@
 	<?php
 			$output = null;
-			
+
 			$favrt  =   listingpro_is_favourite_new(get_the_ID());
-			
+
 			global $listingpro_options;
 			$lp_review_switch = $listingpro_options['lp_review_switch'];
-			
+
 			$lp_default_map_pin = $listingpro_options['lp_map_pin']['url'];
 			if(empty($lp_default_map_pin)){
 				$lp_default_map_pin = get_template_directory() . '/assets/images/pins/pin.png';
@@ -14,9 +14,9 @@
 			if(!isset($postGridCount)){
 				$postGridCount = '0';
 			}
-			global $postGridCount;			
+			global $postGridCount;
 			$postGridCount++;
-			
+
 			$listing_style = '';
 				$listing_style = $listingpro_options['listing_style'];
 				if(isset($_GET['list-style']) && !empty($_GET['list-style'])){
@@ -45,7 +45,7 @@
 				lp_get_lat_long_from_address($gAddress, $post->ID);
 				$latitude = listing_get_metabox('latitude');
 				$longitude = listing_get_metabox('longitude');
-				
+
 				if(!empty($latitude)){
 					$latitude = str_replace(",",".",$latitude);
 				}
@@ -66,9 +66,9 @@
 
 				$claim = '';
 				$claimStatus = '';
-				
+
 				$deafaultFeatImg = lp_default_featured_image_listing();
-				
+
 				if($claimed_section == 'claimed') {
 					if(is_singular( 'listing' ) ){
 						$claimStatus = esc_html__('Claimed', 'listingpro');
@@ -84,7 +84,7 @@
 					$listing_layout = $GLOBALS['listing_layout_element'];
 				}
 				if( $listing_layout == 'grid_view' ) {
-					?>							
+					?>
 					<div class="<?php echo esc_attr($listing_style); ?> <?php echo esc_attr($adClass); ?> lp-grid-box-contianer grid_view2 card1 lp-grid-box-contianer1" data-title="<?php echo get_the_title(); ?>" data-postid="<?php echo get_the_ID(); ?>"   data-lattitue="<?php echo esc_attr($latitude); ?>" data-longitute="<?php echo esc_attr($longitude); ?>" data-posturl="<?php echo get_the_permalink(); ?>" data-lppinurl="<?php echo esc_attr($lp_default_map_pin); ?>">
 						<?php if(is_page_template('template-favourites.php')){ ?>
 							<div class="remove-fav md-close" data-post-id="<?php echo get_the_ID(); ?>">
@@ -107,7 +107,7 @@
 														<a href="'.get_the_permalink().'" >
 															<img src="'.esc_html__('https://placeholdit.imgix.net/~text?txtsize=33&w=372&h=240', 'listingpro').'" alt="">
 														</a>';
-													}	
+													}
 											}elseif(!empty($deafaultFeatImg)){
 												echo "<a href='".get_the_permalink()."' >
 													<img src='" . $deafaultFeatImg . "' />
@@ -133,7 +133,7 @@
 														<a href="'.get_the_permalink().'" >
 															<img src="'.esc_html__('https://placeholdit.imgix.net/~text?txtsize=33&w=372&h=240', 'listingpro').'" alt="">
 														</a>';
-													}	
+													}
 											}elseif(!empty($deafaultFeatImg)){
 												echo "<a href='".get_the_permalink()."' >
 													<img src='" . $deafaultFeatImg . "' />
@@ -171,30 +171,7 @@
 											</a>
 										</h4>
 										<ul>
-											<?php
-											if($lp_review_switch==1){ ?>
-											<li>
-												<?php
-													$NumberRating = listingpro_ratings_numbers($post->ID);
-													if($NumberRating != 0){
-														if($NumberRating <= 1){
-															$review = esc_html__('Rating', 'listingpro');
-														}else{
-															$review = esc_html__('Ratings', 'listingpro');
-														}
-														echo lp_cal_listing_rate(get_the_ID());											
-												?>
-														<span>
-															<?php echo $NumberRating; ?>
-															<?php echo $review; ?>
-														</span>
-												<?php		
-													}else{
-														echo lp_cal_listing_rate(get_the_ID());
-													}
-												?>
-											</li>
-											<?php } ?>
+
 											<li class="middle">
 												<?php echo listingpro_price_dynesty_text($post->ID); ?>
 											</li>
@@ -216,7 +193,7 @@
 																</a>';
 																$catCount++;
 															}
-															
+
 														}
 													}
 												?>
@@ -235,49 +212,14 @@
 									<div class="lp-grid-box-bottom">
 										<div class="pull-left">
 											<div class="show">
-												<?php
-													$countlocs = 1;
-													$cats = get_the_terms( get_the_ID(), 'location' );
-													if(!empty($cats)){
-														echo '<span class="cat-icon">'.listingpro_icons('mapMarkerGrey').'</span>';
-														foreach ( $cats as $cat ) {
-															if($countlocs==1){
-																$term_link = get_term_link( $cat );
-																echo '
-																<a href="'.$term_link.'">
-																	'.$cat->name.'
-																</a>';
-															}
-															$countlocs ++;
-														}
-													}
-													
-												?>
+
 											</div>
-											<?php if(!empty($gAddress)) { ?>
-												<div class="hide">
-													<span class="cat-icon">
-														<?php echo listingpro_icons('mapMarkerGrey'); ?>
-													</span>
-													<span class="text gaddress"><?php echo substr($gAddress, 0, 30); ?>...</span>
-												</div>
-											<?php } ?>
+
 										</div>
-										<?php
-											$openStatus = listingpro_check_time(get_the_ID());
-											if(!empty($openStatus)){
-												echo '
-												<div class="pull-right">
-													<a class="status-btn">';
-														echo $openStatus;
-														echo ' 
-													</a>
-												</div>';
-											}
-										?>
+
 										<div class="clearfix"></div>
 									</div>
-								
+
 								<?php } ?>
 							</div>
 						</div>
@@ -307,7 +249,7 @@
 														<a href="'.get_the_permalink().'" >
 															<img src="'.esc_html__('https://placeholdit.imgix.net/~text?txtsize=33&w=372&h=400', 'listingpro').'" alt="">
 														</a>';
-													}	
+													}
 											}elseif(!empty($deafaultFeatImg)){
 												echo "<a href='".get_the_permalink()."' >
 													<img src='" . $deafaultFeatImg . "' />
@@ -333,7 +275,7 @@
 														<a href="'.get_the_permalink().'" >
 															<img src="'.esc_html__('https://placeholdit.imgix.net/~text?txtsize=33&w=372&h=240', 'listingpro').'" alt="">
 														</a>';
-													}	
+													}
 											}elseif(!empty($deafaultFeatImg)){
 												echo "<a href='".get_the_permalink()."' >
 													<img src='" . $deafaultFeatImg . "' />
@@ -354,7 +296,7 @@
 												<i class="fa <?php echo esc_attr($isfavouriteicon); ?>"></i> <span><?php echo $isfavouritetext; ?></span>
 											</a>
 										</li>
-										
+
 									</ul>
 								</div>
 							</div>
@@ -380,20 +322,20 @@
 														}else{
 															$review = esc_html__('Ratings', 'listingpro');
 														}
-														echo lp_cal_listing_rate(get_the_ID());											
+														echo lp_cal_listing_rate(get_the_ID());
 												?>
 														<span>
 															<?php echo $NumberRating; ?>
 															<?php echo $review; ?>
 														</span>
-												<?php		
+												<?php
 													}else{
 														echo lp_cal_listing_rate(get_the_ID());
 													}
 												?>
 											</li>
 											<?php } ?>
-											
+
 											<li>
 												<?php
 													$cats = get_the_terms( get_the_ID(), 'listing-category' );
@@ -412,7 +354,7 @@
 																</a>';
 																$catCount++;
 															}
-															
+
 														}
 													}
 												?>
@@ -448,7 +390,7 @@
 															$countlocs ++;
 														}
 													}
-													
+
 												?>
 											</div>
 											<?php if(!empty($gAddress)) { ?>
@@ -467,19 +409,19 @@
 												<div class="pull-right">
 													<a class="status-btn">';
 														echo $openStatus;
-														echo ' 
+														echo '
 													</a>
 												</div>';
 											}
 										?>
 										<div class="clearfix"></div>
 									</div>
-								
+
 								<?php } ?>
 							</div>
 						</div>
-				</div>	
-					
+				</div>
+
 				<?php
 				}elseif( $listing_layout == 'list_view' ) {
 					?>
@@ -493,7 +435,7 @@
 							<div class="lp-grid-box-thumb-container" >
 								<div class="lp-grid-box-thumb">
 									<div class="show">
-										<?php 
+										<?php
 											if ( has_post_thumbnail()) {
 												$image = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID()), 'listingpro-blog-grid' );
 													if(!empty($image[0])){
@@ -505,7 +447,7 @@
 														<a href="'.get_the_permalink().'" >
 															<img src="'.esc_html__('https://placeholdit.imgix.net/~text?txtsize=33&w=372&h=240', 'listingpro').'" alt="">
 														</a>';
-													}	
+													}
 											}elseif(!empty($deafaultFeatImg)){
 												echo "<a href='".get_the_permalink()."' >
 													<img src='" . $deafaultFeatImg . "' />
@@ -531,7 +473,7 @@
 														<a href="'.get_the_permalink().'" >
 															<img src="'.esc_html__('https://placeholdit.imgix.net/~text?txtsize=33&w=372&h=240', 'listingpro').'" alt="">
 														</a>';
-													}	
+													}
 											}elseif(!empty($deafaultFeatImg)){
 												echo "<a href='".get_the_permalink()."' >
 													<img src='" . $deafaultFeatImg . "' />
@@ -580,13 +522,13 @@
 													}else{
 														$review = esc_html__('Ratings', 'listingpro');
 													}
-													echo lp_cal_listing_rate(get_the_ID());											
+													echo lp_cal_listing_rate(get_the_ID());
 											?>
 													<span>
 														<?php echo $NumberRating; ?>
 														<?php echo $review; ?>
 													</span>
-											<?php		
+											<?php
 												}else{
 													echo lp_cal_listing_rate(get_the_ID());
 												}
@@ -650,7 +592,7 @@
 															$countlocs ++;
 														}
 													}
-													
+
 												?>
 											</div>
 											<?php if(!empty($gAddress)) { ?>
@@ -669,14 +611,14 @@
 												<div class="pull-right">
 													<a class="status-btn">';
 														echo $openStatus;
-														echo ' 
+														echo '
 													</a>
 												</div>';
 											}
 										?>
 										<div class="clearfix"></div>
 									</div>
-									
+
 								<?php } ?>
 						</div>
 					</div>
@@ -684,13 +626,9 @@
 					}
 					?>
 					<?php //get_template_part('templates/preview'); ?>
-								 
-				<?php 
+
+				<?php
 					if($postGridCount%$postGridnumber == 0){
 						echo '<div class="clearfix"></div>';
 					}
 				?>
-
-
-							
-							
