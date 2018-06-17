@@ -93,7 +93,7 @@
 					<span class="phone-icon">
 						<img class="icon icons8-Flag-2" width="20" height="20" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABAElEQVQ4T+1T0W2DUBDz3QTpBoyQERiBDZpJkAUDVN2gI6QbNBMkG4QNkgXgIotHlaYkNKjKV56EkLg7n5+xjWQREa8AsogwAEf0JzOzbUSs3f2T5PA9lcdfVpZl4+4Fyd1lC8kMQNF13UrgZvY+1qc5kisRE+BXVVX5zbX9QC5gAEszOwBodAvNRcQLgLWW/xnwfCHJhYAlzzljkZsFeO02T8Cp/zxdf4yG8lvbtlHX9Waa08+OgWFjZvtkTsVreGTaRaopfhuSMvPoSUl5kw937p5fyypJGVgpUZqUkn1CVFRV+06Ku3/MMrZkSaDNJetZgLe0fQLe67zf/f+u4QlxCbp3x7Q50wAAAABJRU5ErkJggg=="> <strong> <?php echo esc_html__('See something wrong? ', 'listingpro'); ?> </strong>
 					</span>
-					<a class="phone-number" data-postid="<?php echo $post->ID; ?>"  data-reportedby="<?php echo $currentUserId; ?>" data-posttype="listing" href="#" id="lp-report-this-listing"> <?php echo esc_html__('Report Now!', 'listingpro'); ?></a>
+					<a class="phone-number" data-postid="<?php echo $post->ID; ?>"  data-reportedby="<?php echo $currentUserId; ?>" data-posttype="listing" href="#" id="lp-report-this-listing"> <?php echo esc_html__('Let us know!', 'listingpro'); ?></a>
 				</div>
 			<?php } ?>
 
