@@ -215,21 +215,24 @@ if ( have_posts() ) {
 							<?php } ?>
 
 							<?php
-								$pagesidebrOption = $listingpro_options['lp-detail-page-layout-rsidebar']['sidebar'];
-								if ($pagesidebrOption):
-									foreach ($pagesidebrOption as $key=>$value) {
-
+								$pagelayoutOption = $listingpro_options['lp-detail-page-layout-content']['general'];
+								if ($pagelayoutOption):
+									foreach ($pagelayoutOption as $key=>$value) {
 										switch($key) {
 
-											case 'lp_additional_section': get_template_part( 'templates/single-list/listing-details-style1/sidebar/additional' );
+											// case 'lp_video_section': get_template_part( 'templates/single-list/listing-details-style1/content/video' );
+											// break;
+
+											case 'lp_features_section': get_template_part( 'templates/single-list/listing-details-style1/content/features' );
 											break;
 
-											case 'lp_sidebarelemnts_section': get_template_part( 'templates/single-list/listing-details-style1/sidebar/def-sidebar' );
+											case 'lp_content_section': get_template_part( 'templates/single-list/listing-details-style1/content/content' );
 											break;
-
 
 										}
+
 									}
+
 								endif;
 							?>
 						</div>
@@ -294,20 +297,16 @@ if ( have_posts() ) {
 
 										switch($key) {
 
-											case 'lp_timing_section': get_template_part( 'templates/single-list/listing-details-style1/sidebar/timings' );
+
+											case 'lp_additional_section': get_template_part( 'templates/single-list/listing-details-style1/sidebar/additional' );
 											break;
 
-											case 'lp_mapsocial_section': get_template_part( 'templates/single-list/listing-details-style1/sidebar/map-contacts' );
+											case 'lp_sidebarelemnts_section': get_template_part( 'templates/single-list/listing-details-style1/sidebar/def-sidebar' );
 											break;
 
-											case 'lp_leadform_section': get_template_part( 'templates/single-list/listing-details-style1/sidebar/leadform' );
-											break;
 
 											case 'lp_quicks_section': get_template_part( 'templates/single-list/listing-details-style1/sidebar/quicks' );
 											break;
-
-
-
 
 										}
 									}
