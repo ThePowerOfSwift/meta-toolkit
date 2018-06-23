@@ -163,13 +163,36 @@ if(!function_exists('listingpro_get_all_reviews')){
 											$loves = 0;
 										}
 								?>
-								<div class="bottom-section">
+
+								<!-- remove bottom section -->
+								<!-- <div class="bottom-section">
 									<form action="#">
-										<span><?php echo esc_html__('Was this review ...?', 'listingpro'); ?></span>
+										<span>
+										<?php
+										// echo esc_html__('Was this review ...?', 'listingpro');
+										?></span>
 										<ul>
 											<li>
-												<a class="instresting reviewRes" href="#" data-reacted ="<?php echo esc_html__('You already reacted', 'listingpro'); ?>" data-restype='<?php  echo $interVal; ?>' data-id='<?php the_ID(); ?>' data-score='<?php echo esc_attr($interests); ?>'>
-													<i class="fa fa-thumbs-o-up"></i><?php echo esc_html__('Interesting', 'listingpro'); ?><span class="interests-score"><?php if(!empty($interests)) echo $interests; ?></span>
+												<a class="instresting reviewRes" href="#" data-reacted ="
+												<?php
+												// echo esc_html__('You already reacted', 'listingpro');
+												?>" data-restype='
+												<?php
+												// echo $interVal;
+												?>' data-id='
+												<?php
+												// the_ID();
+												?>' data-score='
+												<?php
+												// echo esc_attr($interests);
+												?>'>
+													<i class="fa fa-thumbs-o-up"></i>
+													<?php
+													// echo esc_html__('Interesting', 'listingpro');
+													?><span class="interests-score">
+													<?php
+													// if(!empty($interests)) echo $interests;
+													?></span>
 													<span class="lp_state"></span>
 												</a>
 
@@ -180,10 +203,13 @@ if(!function_exists('listingpro_get_all_reviews')){
 													<li id="lp-report-review">
 														<a data-postid="<?php echo get_the_ID(); ?>"  data-reportedby="<?php echo $currentUserId; ?>" data-posttype="reviews" href="#" id="lp-report-this-review" class="report"><i class="fa fa-flag" aria-hidden="true"></i><?php esc_html_e('Report','listingpro'); ?></a>
 													</li>
-											<?php } ?>
+											<?php }
+											?>
 										</ul>
 									</form>
-								</div>
+								</div> -->
+
+
 							</div>
 						</section>
 
