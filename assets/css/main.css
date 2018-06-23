@@ -21093,7 +21093,7 @@ h3.first-category {
 
 .blog-single-page {
   height: 350px;
-  background-image: url(http://alpha.toolkits.tools/wp-content/uploads/2017/04/opsi-background-texture.jpg);
+  background-image: url(http://alpha.toolkits.tools/wp-content/uploads/2017/04/opsi-background-texture.jpg) !important;
 }
 
 .blog-single-page .lp-blog-user-thumb {
