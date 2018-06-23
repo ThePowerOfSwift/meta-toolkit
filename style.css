@@ -412,23 +412,3 @@ color:#FFF;
 .mobile-map-space {
   display: none;
 }
-
-
-
-#toolkit-top-level {
-
-}
-
-h3.category-header {
-  font-size: 1.5em;
-}
-
-#toolkit-top-level .category-option,
-.wizard-style .category-option {
-  display: block;
-  border: 1px solid #e3e3e3;
-}
-
-.wizard-style .category-row {
-  clear: left;
-}
