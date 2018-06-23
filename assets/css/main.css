@@ -21058,19 +21058,17 @@ h3.first-category {
   display: block;
   border: 1px solid #e3e3e3;
   border-radius: 8px;
+  height: 5em;
+}
+
+.wizard-style .category-option span.category-text {
+  display: block;
   font-weight: bold;
   height: 5em;
   text-align: left;
   vertical-align: middle;
+  margin: 1em 1em 1em 1em;
 }
-
-.wizard-style .category-option p {
-  font-weight: bold;
-  text-align: left;
-  vertical-align: middle;
-}
-
-
 
 .wizard-style .category-row {
   clear: left;
