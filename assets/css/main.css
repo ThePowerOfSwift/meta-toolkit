@@ -21059,7 +21059,7 @@ h3.first-category {
   border: 1px solid #e3e3e3;
   border-radius: 8px;
   height: 5em;
-  margin: .5em;
+  margin: 0;
 }
 
 .wizard-style .category-option span.category-text {
@@ -21070,6 +21070,12 @@ h3.first-category {
   vertical-align: middle;
   margin: 1em 1em 1em 1em;
 }
+
+.wizard-style .category-box {
+  margin: 0;
+  padding: .5em;
+}
+
 
 .wizard-style .category-row {
   clear: left;
