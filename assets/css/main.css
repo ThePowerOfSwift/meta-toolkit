@@ -21069,7 +21069,13 @@ h3.first-category {
   text-align: left;
   vertical-align: middle;
   margin: 1em 1em 1em 1em;
+  color: #337ab7;
 }
+
+.wizard-style .category-option:hover {
+  text-decoration: underline;
+}
+
 
 .wizard-style .category-box {
   margin: 0;
