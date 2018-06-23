@@ -139,7 +139,7 @@ if(!function_exists('listingpro_get_reviews_form')){
 						</div>
 						<div class = "col-md-6 pull-right padding-right-0">
 							<div class="form-group submit-images">
-								<label for = "post_gallery submit-images"><?php esc_html_e('Select Images','listingpro'); ?></label>
+								<label for = "post_gallery submit-images"><?php esc_html_e('Select Image','listingpro'); ?></label>
 								<a href="#" class="browse-imgs"><?php esc_html_e('Browse','listingpro'); ?></a>
 								<input type = "file" id = "filer_input2" name = "post_gallery[]" multiple="multiple"/>
 							</div>
