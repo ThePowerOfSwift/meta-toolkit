@@ -21075,3 +21075,18 @@ h3.first-category {
   clear: left;
   margin-bottom: 2.5em;
 }
+
+
+
+
+.blog-single-page {
+  height: 350px;
+}
+
+.blog-single-page .lp-blog-user-thumb {
+  display: none;
+}
+
+.blog-single-page .lp-blog-grid-author {
+  display: none;
+}
