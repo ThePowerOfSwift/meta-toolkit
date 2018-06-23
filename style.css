@@ -419,8 +419,8 @@ color:#FFF;
 
 }
 
-.wizard-style h3 {
-
+h3.category-header {
+  font-size: 1.5em;
 }
 
 #toolkit-top-level .category-option,
