@@ -21112,3 +21112,7 @@ h3.first-category {
 .home .header-right-panel .lp-menu-container.pull-right {
   display: none;
 }
+
+.lp-logo img {
+  max-width: 70%;
+}
