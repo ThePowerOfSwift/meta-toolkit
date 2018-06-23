@@ -90,7 +90,16 @@ if(!function_exists('listingpro_get_all_reviews')){
 							</div>
 							<figcaption>
 								<h4><?php the_author(); ?></h4>
-								<p><i class="fa fa-star"></i> <?php echo $user_reviews_count; ?> <?php esc_html_e('Reviews','listingpro'); ?></p>
+
+								<!-- remove review count -->
+								<!-- <p><i class="fa fa-star"></i>
+								<?php
+									// echo $user_reviews_count;
+								?>
+								<?php
+									// esc_html_e('Reviews','listingpro');
+								?>
+							</p> -->
 
 
 							</figcaption>
@@ -100,7 +109,7 @@ if(!function_exists('listingpro_get_all_reviews')){
 								<h3><?php the_title(); ?></h3>
 								<time><?php echo get_the_time('F j, Y g:i a'); ?></time>
 
-								<!-- remove review count -->			
+								<!-- remove review count -->
 								<!-- <div class="review-count">
 									<div class="rating">
 										<?php
