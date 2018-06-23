@@ -21042,6 +21042,10 @@ ADDED FOR OPSI */
 
 }
 
+h3.first-category {
+  padding-top: 2em;
+}
+
 h3.category-header {
   font-size: 1.5em;
 }
@@ -21050,6 +21054,12 @@ h3.category-header {
 .wizard-style .category-option {
   display: block;
   border: 1px solid #e3e3e3;
+  border-radius: 8px;
+  font-weight: bold;
+  height: 5em;
+  text-align: left;
+  vertical-align: middle;
+  
 }
 
 .wizard-style .category-row {
