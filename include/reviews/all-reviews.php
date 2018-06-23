@@ -99,14 +99,18 @@ if(!function_exists('listingpro_get_all_reviews')){
 							<div class="top-section">
 								<h3><?php the_title(); ?></h3>
 								<time><?php echo get_the_time('F j, Y g:i a'); ?></time>
-								<div class="review-count">
+
+								<!-- remove review count -->			
+								<!-- <div class="review-count">
 									<div class="rating">
 										<?php
-											listingpro_ratings_stars('rating', get_the_ID());
+											// listingpro_ratings_stars('rating', get_the_ID());
 										?>
 									</div>
-									<?php echo lp_cal_listing_rate(get_the_ID(),'lp_review', true); ?>
-								</div>
+									<?php
+											// echo lp_cal_listing_rate(get_the_ID(),'lp_review', true);
+											?>
+								</div> -->
 							</div>
 							<div class="content-section">
 								<p><?php the_content(); ?></p>
@@ -286,14 +290,17 @@ if(!function_exists('listingpro_get_all_reviews_app_view')){
                             <figcaption>
                                 <h3><?php the_title(); ?></h3>
                                 <time><?php echo get_the_time('F j, Y g:i a'); ?></time>
-                                <div class="review-count">
+																<!-- remove review count -->
+																<!-- <div class="review-count">
                                     <div class="rating">
                                         <?php
-                                        listingpro_ratings_stars('rating', get_the_ID());
+                                      //  listingpro_ratings_stars('rating', get_the_ID());
                                         ?>
                                     </div>
-                                    <?php echo lp_cal_listing_rate(get_the_ID(),'lp_review', true); ?>
-                                </div>
+                                    <?php
+																		// echo lp_cal_listing_rate(get_the_ID(),'lp_review', true);
+																		?>
+                                </div> -->
                             </figcaption>
                         </div>
                     </figure>
