@@ -22,23 +22,39 @@ if(!function_exists('listingpro_get_reviews_form')){
 				?>
 
 					<div class="review-form" id="review-section">
-						<h3 id="reply-title" class="comment-reply-title"><i class="fa fa-star-o"></i> <?php esc_html_e('Add your feedback','listingpro'); ?> <i class="fa fa-caret-down"></i></h3>
+						<h3 id="reply-title" class="comment-reply-title"><i class="fa fa-star-o"></i> <?php
+						esc_html_e('Add your feedback','listingpro');
+						?> <i class="fa fa-caret-down"></i></h3>
 						<form id = "rewies_form" name = "rewies_form" action = "" method = "post" enctype="multipart/form-data">
-							<div class = "col-md-6 padding-left-0">
+
+							<!-- Remove rating option -->
+							<!-- <div class = "col-md-6 padding-left-0">
 								<div class="form-group margin-bottom-40">
-									<p class="padding-bottom-15"><?php esc_html_e('Your Rating for this listing','listingpro'); ?></p>
+									<p class="padding-bottom-15"><?php
+									// esc_html_e('Your Rating for this listing','listingpro'); 
+									?></p>
 									<div class="sfdfdf list-style-none form-review-stars">
 										<input type="hidden" id="review-rating" name="rating" class="rating-tooltip" data-filled="fa fa-star fa-2x" data-empty="fa fa-star-o fa-2x" />
 										<div class="review-emoticons">
-											<div class="review angry"><?php echo listingpro_icons('angry'); ?></div>
-											<div class="review cry"><?php echo listingpro_icons('crying'); ?></div>
-											<div class="review sleeping"><?php echo listingpro_icons('sleeping'); ?></div>
-											<div class="review smily"><?php echo listingpro_icons('smily'); ?></div>
-											<div class="review cool"><?php echo listingpro_icons('cool'); ?></div>
+											<div class="review angry"><?php
+											// echo listingpro_icons('angry');
+											?></div>
+											<div class="review cry"><?php
+											// echo listingpro_icons('crying');
+											?></div>
+											<div class="review sleeping"><?php
+											// echo listingpro_icons('sleeping');
+											?></div>
+											<div class="review smily"><?php
+											// echo listingpro_icons('smily');
+											?></div>
+											<div class="review cool"><?php
+											// echo listingpro_icons('cool');
+											?></div>
 										</div>
 									</div>
 								</div>
-							</div>
+							</div> -->
 
 							<div class = "col-md-6 pull-right padding-right-0">
 								<div class="form-group submit-images">
