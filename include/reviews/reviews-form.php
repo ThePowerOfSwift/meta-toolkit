@@ -98,7 +98,7 @@ if(!function_exists('listingpro_get_reviews_form')){
 											</div>
 									</div>
 									<p class="form-submit post-reletive">
-										<input name="submit_review" type="submit" id="submit" class="lp-review-btn btn-second-hover" value="<?php esc_html_e('Submit Review','listingpro'); ?>" disabled>
+										<input name="submit_review" type="submit" id="submit" class="lp-review-btn btn-second-hover" value="<?php esc_html_e('Submit Feedback','listingpro'); ?>" disabled>
 										<input type="hidden" name="comment_post_ID" value="<?php echo $postid; ?>" id="comment_post_ID">
 										<input type="hidden" name="errormessage" value="<?php esc_html_e('Please fill Email, Title, Description and Rating', 'listingpro'); ?>">
 										<span class="review_status"></span>
@@ -108,7 +108,7 @@ if(!function_exists('listingpro_get_reviews_form')){
 								}else{
 							?>
 								<p class="form-submit post-reletive">
-									<input name="submit_review" type="submit" id="submit" class="lp-review-btn btn-second-hover" value="<?php esc_html_e('Submit Review','listingpro'); ?>">
+									<input name="submit_review" type="submit" id="submit" class="lp-review-btn btn-second-hover" value="<?php esc_html_e('Submit Feedback','listingpro'); ?>">
 									<input type="hidden" name="comment_post_ID" value="<?php echo $postid; ?>" id="comment_post_ID">
 									<input type="hidden" name="errormessage" value="<?php esc_html_e('Please fill Email, Title, Description and Rating', 'listingpro'); ?>">
 									<span class="review_status"></span>
@@ -234,11 +234,11 @@ if(!function_exists('listingpro_get_reviews_form')){
 									<?php
 										if($lp_Reviews_OPT=="sign_in"){
 									?>
-										<input name="submit_review" type="submit" id="submit" class="lp-review-btn btn-second-hover md-trigger" data-modal="modal-3" value="<?php echo esc_html__('Submit Review ', 'listingpro');?>" disabled>
+										<input name="submit_review" type="submit" id="submit" class="lp-review-btn btn-second-hover md-trigger" data-modal="modal-3" value="<?php echo esc_html__('Submit Feedback ', 'listingpro');?>" disabled>
 									<?php
 										}elseif($lp_Reviews_OPT=="instant_sign_in"){
 									?>
-										<input name="submit_review" type="submit" id="submit" class="lp-review-btn btn-second-hover" value="<?php echo esc_html__('Signup & Submit Review ', 'listingpro');?>" disabled>
+										<input name="submit_review" type="submit" id="submit" class="lp-review-btn btn-second-hover" value="<?php echo esc_html__('Signup & Submit Feedback ', 'listingpro');?>" disabled>
 									<?php } ?>
 									<span class="review_status"></span>
 									<img class="loadinerSearch" width="100px" src="<?php echo get_template_directory_uri().'/assets/images/ajax-load.gif' ?>">
@@ -250,11 +250,11 @@ if(!function_exists('listingpro_get_reviews_form')){
 									<?php
 										if($lp_Reviews_OPT=="sign_in"){
 									?>
-										<input name="submit_review" type="submit" id="submit" class="lp-review-btn btn-second-hover md-trigger" data-modal="modal-3" value="<?php echo esc_html__('Submit Review ', 'listingpro');?>">
+										<input name="submit_review" type="submit" id="submit" class="lp-review-btn btn-second-hover md-trigger" data-modal="modal-3" value="<?php echo esc_html__('Submit Feedback ', 'listingpro');?>">
 									<?php
 										}elseif($lp_Reviews_OPT=="instant_sign_in"){
 									?>
-										<input name="submit_review" type="submit" id="submit" class="lp-review-btn btn-second-hover" value="<?php echo esc_html__('Signup & Submit Review ', 'listingpro');?>">
+										<input name="submit_review" type="submit" id="submit" class="lp-review-btn btn-second-hover" value="<?php echo esc_html__('Signup & Submit Feedback ', 'listingpro');?>">
 									<?php } ?>
 
 									<span class="review_status"></span>
