@@ -66,12 +66,12 @@ if(!function_exists('listingpro_get_reviews_form')){
 							<div class="clearfix"></div>
 							<div class="form-group">
 								<label for = "post_title"><?php esc_html_e('Title','listingpro'); ?></label>
-								<input placeholder="<?php esc_html_e('Example: It was an awesome experience to be there','listingpro'); ?>" type = "text" id = "post_title" class="form-control" name = "post_title" />
+								<input placeholder="<?php esc_html_e('Helper text to guide users in what to include here','listingpro'); ?>" type = "text" id = "post_title" class="form-control" name = "post_title" />
 							</div>
 							<div class="form-group">
 								<label for = "post_description"><?php esc_html_e('Review','listingpro'); ?></label>
-								<textarea placeholder="<?php esc_html_e('Tip: A great review covers food, service, and ambiance. Got recommendations for your favorite dishes and drinks, or something everyone should try here? Include that too!','listingpro'); ?>" id = "post_description" class="form-control" rows="8" name = "post_description" ></textarea>
-								<p><?php esc_html_e('Your review is recommended to be at least 140 characters long','listingpro'); ?></p>
+								<textarea placeholder="<?php esc_html_e('Helper text to guide users in what to include here','listingpro'); ?>" id = "post_description" class="form-control" rows="8" name = "post_description" ></textarea>
+								<p><?php esc_html_e('Helper text to remind users to keep this fairly brief','listingpro'); ?></p>
 							</div>
 							<div class="form-group">
 								<?php
@@ -194,12 +194,12 @@ if(!function_exists('listingpro_get_reviews_form')){
 
 						<div class="form-group">
 							<label for = "post_title"><?php esc_html_e('Title','listingpro'); ?></label>
-							<input type = "text" placeholder="<?php esc_html_e('Example: It was an awesome experience to be there','listingpro'); ?>" id = "post_title" class="form-control" name = "post_title" />
+							<input type = "text" placeholder="<?php esc_html_e('Helper text to guide users in what to include here','listingpro'); ?>" id = "post_title" class="form-control" name = "post_title" />
 						</div>
 						<div class="form-group">
 							<label for = "post_description"><?php esc_html_e('Review','listingpro'); ?></label>
-							<textarea placeholder="<?php esc_html_e('Tip: A great review covers food, service, and ambiance. Got recommendations for your favorite dishes and drinks, or something everyone should try here? Include that too!','listingpro'); ?>" id = "post_description" class="form-control" rows="8" name = "post_description" ></textarea>
-							<p><?php esc_html_e('Your review is recommended to be at least 140 characters long','listingpro'); ?></p>
+							<textarea placeholder="<?php esc_html_e('Helper text to guide users in what to include here','listingpro'); ?>" id = "post_description" class="form-control" rows="8" name = "post_description" ></textarea>
+							<p><?php esc_html_e('Helper text to remind users to keep this fairly brief','listingpro'); ?></p>
 						</div>
 						<div class="form-group">
 								<?php
