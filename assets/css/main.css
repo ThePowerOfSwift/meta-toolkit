@@ -21062,8 +21062,15 @@ h3.first-category {
   height: 5em;
   text-align: left;
   vertical-align: middle;
-
 }
+
+.wizard-style .category-option p {
+  font-weight: bold;
+  text-align: left;
+  vertical-align: middle;
+}
+
+
 
 .wizard-style .category-row {
   clear: left;
