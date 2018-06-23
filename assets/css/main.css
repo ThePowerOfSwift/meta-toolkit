@@ -21090,3 +21090,7 @@ h3.first-category {
 .blog-single-page .lp-blog-grid-author {
   display: none;
 }
+
+.blog-single-page .breadcrumbs {
+  display: none;
+}
