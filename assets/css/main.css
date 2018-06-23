@@ -21107,3 +21107,8 @@ h3.first-category {
 .blog-single-page .breadcrumbs {
   display: none;
 }
+
+
+.home .header-right-panel .lp-menu-container.pull-right {
+  display: none;
+}
