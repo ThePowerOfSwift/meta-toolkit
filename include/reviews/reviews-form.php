@@ -31,7 +31,7 @@ if(!function_exists('listingpro_get_reviews_form')){
 							<!-- <div class = "col-md-6 padding-left-0">
 								<div class="form-group margin-bottom-40">
 									<p class="padding-bottom-15"><?php
-									// esc_html_e('Your Rating for this listing','listingpro'); 
+									// esc_html_e('Your Rating for this listing','listingpro');
 									?></p>
 									<div class="sfdfdf list-style-none form-review-stars">
 										<input type="hidden" id="review-rating" name="rating" class="rating-tooltip" data-filled="fa fa-star fa-2x" data-empty="fa fa-star-o fa-2x" />
@@ -138,21 +138,34 @@ if(!function_exists('listingpro_get_reviews_form')){
 
 					<?php } ?>
 
-						<div class = "col-md-6 padding-left-0">
-							<div class="form-group margin-bottom-40">
-								<p class="padding-bottom-15"><?php esc_html_e('Your Rating for this listing','listingpro'); ?></p>
-								<div class="list-style-none form-review-stars">
-									<input type="hidden" name="rating" class="rating-tooltip" data-filled="fa fa-star fa-2x" data-empty="fa fa-star-o fa-2x" />
-									<div class="review-emoticons">
-										<div class="review angry"><?php echo listingpro_icons('angry'); ?></div>
-										<div class="review cry"><?php echo listingpro_icons('crying'); ?></div>
-										<div class="review sleeping"><?php echo listingpro_icons('sleeping'); ?></div>
-										<div class="review smily"><?php echo listingpro_icons('smily'); ?></div>
-										<div class="review cool"><?php echo listingpro_icons('cool'); ?></div>
-									</div>
+					<!-- Remove rating option -->
+					<!-- <div class = "col-md-6 padding-left-0">
+						<div class="form-group margin-bottom-40">
+							<p class="padding-bottom-15"><?php
+							// esc_html_e('Your Rating for this listing','listingpro');
+							?></p>
+							<div class="sfdfdf list-style-none form-review-stars">
+								<input type="hidden" id="review-rating" name="rating" class="rating-tooltip" data-filled="fa fa-star fa-2x" data-empty="fa fa-star-o fa-2x" />
+								<div class="review-emoticons">
+									<div class="review angry"><?php
+									// echo listingpro_icons('angry');
+									?></div>
+									<div class="review cry"><?php
+									// echo listingpro_icons('crying');
+									?></div>
+									<div class="review sleeping"><?php
+									// echo listingpro_icons('sleeping');
+									?></div>
+									<div class="review smily"><?php
+									// echo listingpro_icons('smily');
+									?></div>
+									<div class="review cool"><?php
+									// echo listingpro_icons('cool');
+									?></div>
 								</div>
 							</div>
 						</div>
+					</div> -->
 						<div class = "col-md-6 pull-right padding-right-0">
 							<div class="form-group submit-images">
 								<label for = "post_gallery submit-images"><?php esc_html_e('Select Image','listingpro'); ?></label>
