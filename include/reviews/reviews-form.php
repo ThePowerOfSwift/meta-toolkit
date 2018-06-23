@@ -65,11 +65,11 @@ if(!function_exists('listingpro_get_reviews_form')){
 							</div>
 							<div class="clearfix"></div>
 							<div class="form-group">
-								<label for = "post_title"><?php esc_html_e('Title','listingpro'); ?></label>
+								<label for = "post_title"><?php esc_html_e('Opening Sentence','listingpro'); ?></label>
 								<input placeholder="<?php esc_html_e('Helper text to guide users in what to include here','listingpro'); ?>" type = "text" id = "post_title" class="form-control" name = "post_title" />
 							</div>
 							<div class="form-group">
-								<label for = "post_description"><?php esc_html_e('Review','listingpro'); ?></label>
+								<label for = "post_description"><?php esc_html_e('Feedback','listingpro'); ?></label>
 								<textarea placeholder="<?php esc_html_e('Helper text to guide users in what to include here','listingpro'); ?>" id = "post_description" class="form-control" rows="8" name = "post_description" ></textarea>
 								<p><?php esc_html_e('Helper text to remind users to keep this fairly brief','listingpro'); ?></p>
 							</div>
@@ -193,11 +193,11 @@ if(!function_exists('listingpro_get_reviews_form')){
 							<?php } ?>
 
 						<div class="form-group">
-							<label for = "post_title"><?php esc_html_e('Title','listingpro'); ?></label>
+							<label for = "post_title"><?php esc_html_e('Opening sentence','listingpro'); ?></label>
 							<input type = "text" placeholder="<?php esc_html_e('Helper text to guide users in what to include here','listingpro'); ?>" id = "post_title" class="form-control" name = "post_title" />
 						</div>
 						<div class="form-group">
-							<label for = "post_description"><?php esc_html_e('Review','listingpro'); ?></label>
+							<label for = "post_description"><?php esc_html_e('Feedback','listingpro'); ?></label>
 							<textarea placeholder="<?php esc_html_e('Helper text to guide users in what to include here','listingpro'); ?>" id = "post_description" class="form-control" rows="8" name = "post_description" ></textarea>
 							<p><?php esc_html_e('Helper text to remind users to keep this fairly brief','listingpro'); ?></p>
 						</div>
