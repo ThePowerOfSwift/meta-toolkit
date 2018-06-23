@@ -21039,15 +21039,18 @@ ADDED FOR OPSI */
 
 
 #toolkit-top-level {
+  margin-top: 5em;
+  margin-bottom: 10em;
+}
 
+
+
+h3.category-header {
+  font-size: 1.5em;
 }
 
 h3.first-category {
   padding-top: 2em;
-}
-
-h3.category-header {
-  font-size: 1.5em;
 }
 
 #toolkit-top-level .category-option,
@@ -21059,7 +21062,7 @@ h3.category-header {
   height: 5em;
   text-align: left;
   vertical-align: middle;
-  
+
 }
 
 .wizard-style .category-row {
